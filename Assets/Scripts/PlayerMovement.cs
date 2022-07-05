@@ -9,6 +9,7 @@ namespace DefaultNamespace
     public class PlayerMovement : MonoBehaviour
     { 
         [SerializeField] private PlayerStatsSO playerStatsSo;
+        [SerializeField] private GameSettingsSO gameSettingsSo;
 
         [SerializeField] private Rigidbody rb;
         [SerializeField] private Transform _transform;
@@ -21,6 +22,7 @@ namespace DefaultNamespace
         }
         
         private Vector2 _desiredVelocity;
+        private Vector2 _inputDirection;
         
 
         public void OnMove(InputValue value)
@@ -29,8 +31,8 @@ namespace DefaultNamespace
             var input = value.Get<Vector2>();
             if (_desiredVelocity.Equals(input)) return;
             
-            var direction = input.normalized;
-            _desiredVelocity = direction * playerStatsSo.speed;
+            _inputDirection = input.normalized;
+            _desiredVelocity = _inputDirection * playerStatsSo.speed;
 
             UpdateFlame();
         }
@@ -39,12 +41,13 @@ namespace DefaultNamespace
         {
             rb.velocity = Vector2.Lerp(rb.velocity, _desiredVelocity, playerStatsSo.acceleration);
             UpdateRotation();
+            ConstraintMovementInScreen();
         }
 
         private void UpdateRotation()
         {
-            var velRelation = rb.velocity.x / playerStatsSo.speed;
-            var newAngle = playerStatsSo.maxRotation * velRelation;
+            //var velRelation = rb.velocity.x / playerStatsSo.speed;
+            var newAngle = playerStatsSo.maxRotation * _inputDirection.x;
             
             _transform.localRotation = Quaternion.Euler(-90.0f, -newAngle, 0.0f);
         }
@@ -58,6 +61,18 @@ namespace DefaultNamespace
             else
             {
                 flame.Play();
+            }
+        }
+
+        private void ConstraintMovementInScreen()
+        {
+            var newPos = _transform.position + rb.velocity * Time.fixedDeltaTime;
+            if (newPos.x > gameSettingsSo.screenWidth * 0.5f ||
+                newPos.x < -gameSettingsSo.screenWidth * 0.5f ||
+                newPos.y > gameSettingsSo.screenHeight * 0.5f ||
+                newPos.y < -gameSettingsSo.screenHeight * 0.5f)
+            {
+                rb.velocity = Vector3.zero;
             }
         }
     }
