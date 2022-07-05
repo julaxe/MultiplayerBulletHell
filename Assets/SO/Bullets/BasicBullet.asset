@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76d83512e646808894f44d56468aa8, type: 3}
   m_Name: BasicBullet
   m_EditorClassIdentifier: 
-  range: 0
-  damage: 0
-  sprite: {fileID: 0}
+  bulletPrefab: {fileID: 3680445273153400923, guid: cbffa5dd4811a1842a1038f94f7515b5, type: 3}
+  rangeInSeconds: 5
+  damage: 10
+  speed: 1

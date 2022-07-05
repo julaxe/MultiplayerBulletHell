@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb06db7434c40b0bad9137b296cbbe6, type: 3}
-  m_Name: BasicWeapon
+  m_Script: {fileID: 11500000, guid: 290b84b9de4d421786eb823722f65f6b, type: 3}
+  m_Name: BulletPoolBasicBullet
   m_EditorClassIdentifier: 
-  weaponName: First Weapon
-  bulletPoolSo: {fileID: 11400000, guid: f6f91b5d46630744fb74d81126df935c, type: 2}
-  ammo: 30
+  bulletSo: {fileID: 11400000, guid: 1a4f63e35952c0645a6dfa8774627bd6, type: 2}
+  initialAmountOfBullets: 10
