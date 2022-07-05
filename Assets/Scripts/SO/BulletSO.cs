@@ -7,6 +7,6 @@ namespace SO
     {
         public float range;
         public float damage;
-        public Sprite sprite;
+        public float speed;
     }
 }
