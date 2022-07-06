@@ -9,22 +9,17 @@ namespace DefaultNamespace
         [SerializeField] private BulletSO bulletSo;
         [SerializeField] private Rigidbody rb;
         [SerializeField] private Vector2 velocity;
-        private Vector2 _direction;
+        private Vector3 _direction;
 
         private void OnValidate()
         {
             rb = GetComponent<Rigidbody>();
         }
 
-        private void Start()
-        {
-            rb.velocity = velocity;
-        }
-
-        public void SetDirection(Vector2 direction)
+        public void SetDirection(Vector3 direction)
         {
             _direction = direction.normalized;
-            velocity = _direction * bulletSo.speed;
+            rb.velocity = _direction * bulletSo.speed;
         }
         
     }

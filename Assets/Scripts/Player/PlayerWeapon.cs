@@ -23,7 +23,7 @@ namespace DefaultNamespace
             Debug.Log("Fire");
             var bullet = weaponSo.bulletPoolSo.GetBulletFromPool();
             bullet.transform.position = canon.position;
-            bullet.GetComponent<BulletInteractions>().OnShoot(Vector2.up);
+            bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
         }
     }
 }

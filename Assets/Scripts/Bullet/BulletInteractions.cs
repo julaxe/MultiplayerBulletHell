@@ -25,7 +25,7 @@ namespace Bullet
             StartCoroutine(RangeCoroutine(bulletSo.rangeInSeconds));
         }
 
-        public void OnShoot(Vector2 direction)
+        public void OnShoot(Vector3 direction)
         {
             bulletMovement.SetDirection(direction);
             bulletAnimation.StartVFX();

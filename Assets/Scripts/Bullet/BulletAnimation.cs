@@ -49,14 +49,14 @@ namespace Bullet
         
         private void OnGUI()
         {
-            if (GUI.Button(new Rect(10, 70, 100, 30), "Hit"))
-            {
-                ShowHit();
-            }
-            if (GUI.Button(new Rect(10, 110, 100, 30), "Muzzle"))
-            {
-                ShowMuzzle();
-            }
+            // if (GUI.Button(new Rect(10, 70, 100, 30), "Hit"))
+            // {
+            //     ShowHit();
+            // }
+            // if (GUI.Button(new Rect(10, 110, 100, 30), "Muzzle"))
+            // {
+            //     ShowMuzzle();
+            // }
         }
     }
 }
