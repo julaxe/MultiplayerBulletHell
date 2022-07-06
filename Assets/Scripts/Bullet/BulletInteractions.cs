@@ -28,6 +28,8 @@ namespace Bullet
         public void OnShoot(Vector2 direction)
         {
             bulletMovement.SetDirection(direction);
+            bulletAnimation.StartVFX();
+            bulletAnimation.ShowMuzzle();
         }
 
         IEnumerator RangeCoroutine(float seconds)

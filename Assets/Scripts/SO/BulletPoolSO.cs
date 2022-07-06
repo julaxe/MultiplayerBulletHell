@@ -11,7 +11,7 @@ namespace SO
         public BulletSO bulletSo;
         public int initialAmountOfBullets;
 
-        private void OnEnable()
+        public void InitializePool()
         {
             bulletPool = new Queue<GameObject>();
             for (int i = 0; i < initialAmountOfBullets; i++)
@@ -19,15 +19,6 @@ namespace SO
                 var newBullet = Instantiate(bulletSo.bulletPrefab);
                 AddBullet(newBullet);
             }
-        }
-
-        private void OnDisable()
-        {
-            foreach (var bullet in bulletPool)
-            {
-                DestroyImmediate(bullet);
-            }
-            bulletPool.Clear();
         }
 
         public void AddBullet(GameObject bullet)

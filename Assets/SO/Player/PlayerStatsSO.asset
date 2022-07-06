@@ -15,5 +15,6 @@ MonoBehaviour:
   maxHealth: 100
   speed: 5
   maxRotation: 30
+  accRotation: 0.207
   acceleration: 0.15
   weapon: {fileID: 11400000, guid: b15216b468d195e4c99d62640255445d, type: 2}

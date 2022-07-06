@@ -5262,6 +5262,7 @@ MonoBehaviour:
   rb: {fileID: 1049632097}
   _transform: {fileID: 4433943008929754}
   flame: {fileID: 679490275}
+  accRotation: 0.328
 --- !u!1 &1510365564452322
 GameObject:
   m_ObjectHideFlags: 0

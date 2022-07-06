@@ -23,9 +23,8 @@ namespace Bullet
             var muzzleVFX = Instantiate (muzzle, transform.position, Quaternion.identity);
         }
 
-        private void OnEnable()
+        public void StartVFX()
         {
-            ShowMuzzle();
             foreach (var trail in trails)
             {
                 trail.Play();

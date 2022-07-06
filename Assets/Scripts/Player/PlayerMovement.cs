@@ -23,7 +23,14 @@ namespace DefaultNamespace
         
         private Vector2 _desiredVelocity;
         private Vector2 _inputDirection;
+        private float _currentRotation;
         
+
+
+        private void Start()
+        {
+            _currentRotation = _transform.localRotation.y;
+        }
 
         public void OnMove(InputValue value)
         {
@@ -47,9 +54,9 @@ namespace DefaultNamespace
         private void UpdateRotation()
         {
             //var velRelation = rb.velocity.x / playerStatsSo.speed;
-            var newAngle = playerStatsSo.maxRotation * _inputDirection.x;
-            
-            _transform.localRotation = Quaternion.Euler(-90.0f, -newAngle, 0.0f);
+            var desiredAngle = playerStatsSo.maxRotation * _inputDirection.x;
+            _currentRotation = Mathf.Lerp(_currentRotation, desiredAngle, playerStatsSo.accRotation);
+            _transform.localRotation = Quaternion.Euler(-90.0f, -_currentRotation, 0.0f);
         }
 
         private void UpdateFlame()

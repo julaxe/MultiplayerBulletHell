@@ -1,4 +1,7 @@
+using System;
+using Bullet;
 using SO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,12 +12,18 @@ namespace DefaultNamespace
         [SerializeField] private WeaponSO weaponSo;
         [SerializeField] private Transform canon;
 
+
+        private void Start()
+        {
+            weaponSo.bulletPoolSo.InitializePool();
+        }
+
         private void OnFire(InputValue value)
         {
             Debug.Log("Fire");
             var bullet = weaponSo.bulletPoolSo.GetBulletFromPool();
             bullet.transform.position = canon.position;
-            bullet.GetComponent<BulletMovement>().SetDirection(Vector2.up);
+            bullet.GetComponent<BulletInteractions>().OnShoot(Vector2.up);
         }
     }
 }
