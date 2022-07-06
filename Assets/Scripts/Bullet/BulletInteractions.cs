@@ -38,7 +38,7 @@ namespace Bullet
             bulletAnimation.DisableBulletAnimation();
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
             bulletAnimation.ShowHit();
         }

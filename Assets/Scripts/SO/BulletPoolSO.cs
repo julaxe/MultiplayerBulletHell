@@ -10,7 +10,7 @@ namespace SO
         public Queue<GameObject> bulletPool;
         public BulletSO bulletSo;
         public int initialAmountOfBullets;
-
+        
         public void InitializePool()
         {
             bulletPool = new Queue<GameObject>();
