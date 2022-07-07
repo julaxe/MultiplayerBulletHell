@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using DefaultNamespace;
 using SO;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Bullet
 {
-    public class BulletInteractions : MonoBehaviour
+    public class BulletInteractions : NetworkBehaviour
     {
         
         [SerializeField] private BulletSO bulletSo;
@@ -42,5 +43,6 @@ namespace Bullet
         {
             bulletAnimation.ShowHit();
         }
+        
     }
 }

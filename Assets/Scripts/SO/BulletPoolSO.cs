@@ -29,6 +29,7 @@ namespace SO
 
         public GameObject GetBulletFromPool()
         {
+            if (bulletPool == null) InitializePool();
             var bullet = bulletPool.Count == 0 ? Instantiate(bulletSo.bulletPrefab) : bulletPool.Dequeue();
             bullet.SetActive(true);
             return bullet;

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a4f5eb91464a2da4589cbb6f2cae42, type: 3}
-  m_Name: WaitAndShootState
+  m_Script: {fileID: 11500000, guid: 9ad10f9fd86d4380938f95848d3aac61, type: 3}
+  m_Name: MoveDown
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: bf3234836495fb14cb59992dfc922fd5, type: 2}
-  - {fileID: 11400000, guid: 7ab05cc11500a9f45bda517527117383, type: 2}
+  speed: 1

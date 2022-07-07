@@ -9706,6 +9706,7 @@ GameObject:
   - component: {fileID: 1521761997912139401}
   - component: {fileID: 1521761997912139406}
   - component: {fileID: 1363786368273646484}
+  - component: {fileID: 2778380394307942047}
   m_Layer: 7
   m_Name: RedBullet
   m_TagString: Untagged
@@ -9811,6 +9812,22 @@ MonoBehaviour:
   bulletSo: {fileID: 11400000, guid: 5edf06f2209019147a120c30e2264613, type: 2}
   bulletAnimation: {fileID: 1521761997912139406}
   bulletMovement: {fileID: 1521761997912139401}
+--- !u!114 &2778380394307942047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574537439921776531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1574758033319440707
 GameObject:
   m_ObjectHideFlags: 0

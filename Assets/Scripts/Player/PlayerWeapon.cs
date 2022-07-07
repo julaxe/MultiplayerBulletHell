@@ -1,29 +1,43 @@
 using System;
 using Bullet;
 using SO;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace DefaultNamespace
 {
-    public class PlayerWeapon : MonoBehaviour
+    public class PlayerWeapon : NetworkBehaviour
     {
-        [SerializeField] private WeaponSO weaponSo;
+        public WeaponSO weaponSo;
         [SerializeField] private Transform canon;
-
-
-        private void Start()
-        {
-            weaponSo.bulletPoolSo.InitializePool();
-        }
 
         private void OnFire(InputValue value)
         {
-            Debug.Log("Fire");
+            if (!IsOwner) return;
+            Shoot_ServerRpc();
+        }
+
+        [ServerRpc]
+        private void Shoot_ServerRpc()
+        {
+            Shoot_ClientRpc();
+        }
+
+        [ClientRpc]
+        private void Shoot_ClientRpc()
+        {
             var bullet = weaponSo.bulletPoolSo.GetBulletFromPool();
             bullet.transform.position = canon.position;
-            bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
+            if (IsOwner)
+            {
+                bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
+            }
+            else
+            {
+                bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward * -1.0f);
+            }
         }
     }
 }

@@ -19398,6 +19398,7 @@ GameObject:
   - component: {fileID: 3642440206188894584}
   - component: {fileID: 3642440206188894587}
   - component: {fileID: 3642440206188894586}
+  - component: {fileID: 4592859165301419290}
   m_Layer: 6
   m_Name: BlueBullet
   m_TagString: Untagged
@@ -19503,3 +19504,19 @@ MonoBehaviour:
   bulletSo: {fileID: 11400000, guid: 1a4f63e35952c0645a6dfa8774627bd6, type: 2}
   bulletAnimation: {fileID: 3642440206188894585}
   bulletMovement: {fileID: 3642440206188894590}
+--- !u!114 &4592859165301419290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680445273153400923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
