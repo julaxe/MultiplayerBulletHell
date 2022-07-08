@@ -1,17 +1,15 @@
-using System;
 using SO;
 using Unity.Netcode;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-namespace Player
+namespace UI
 {
-    public class PlayerSpawner : NetworkBehaviour
+    public class ButtonBehaviour : NetworkBehaviour
     {
         public GameObject enemyPrefab;
         [SerializeField] private GameSettingsSO gameSettings;
 
-        private void SpawnEnemy()
+        public void SpawnEnemy()
         {
             SpawnEnemy_ServerRpc(OwnerClientId);
         }
