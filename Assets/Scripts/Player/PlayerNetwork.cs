@@ -3,6 +3,7 @@ using DefaultNamespace;
 using SO;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Player
 {
@@ -11,10 +12,9 @@ namespace Player
         private readonly NetworkVariable<PlayerNetworkData> _netState =
             new(writePerm: NetworkVariableWritePermission.Owner);
 
-        private PlayerWeapon _playerWeapon;
         [SerializeField] private WeaponSO enemyWeapon;
-        [SerializeField] private LayerMask enemyLayer;
 
+        private PlayerWeapon _playerWeapon;
         private void Awake()
         {
             _playerWeapon = GetComponent<PlayerWeapon>();

@@ -43,7 +43,7 @@ public class PhaseManager : NetworkBehaviour
         }
     }
     
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void ChangePhase_ServerRpc()
     {
         ChangePhase_ClientRpc();

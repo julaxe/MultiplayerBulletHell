@@ -1,29 +1,28 @@
 using System;
-using DefaultNamespace.Weapon;
 using SO;
+using Unity.Netcode;
 using UnityEngine;
+using Weapon;
 
-namespace DefaultNamespace
+public class StateController : NetworkBehaviour
 {
-    public class StateController : MonoBehaviour
-    {
-        public State currentState;
+    public State currentState;
         
-        [HideInInspector] public float timer = 0.0f;
-        [SerializeField] private WeaponBehaviour weapon;
-        private void OnValidate()
-        {
-            weapon = GetComponent<WeaponBehaviour>();
-        }
+    [HideInInspector] public float timer = 0.0f;
+    [SerializeField] private WeaponBehaviour weapon;
+    private void OnValidate()
+    {
+        weapon = GetComponent<WeaponBehaviour>();
+    }
 
-        private void Update()
-        {
+    private void Update()
+    {
+        if(IsOwner)
             currentState.UpdateState(this);
-        }
+    }
 
-        public void Shoot()
-        {
-            weapon.Fire();
-        }
+    public void Shoot()
+    {
+        weapon.Fire();
     }
 }

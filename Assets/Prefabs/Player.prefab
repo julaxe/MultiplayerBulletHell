@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 696569905911482661}
   - component: {fileID: -238189952055194347}
   - component: {fileID: -6557214626486580166}
+  - component: {fileID: 5949602984356303285}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -213,9 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWeapon: {fileID: 11400000, guid: b4641f625226ed540bcb561e8dc8291a, type: 2}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &-6557214626486580166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +228,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7805056323437912549, guid: 4071c631ed7ba9746bada3c32e50ef49, type: 3}
   gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
+--- !u!114 &5949602984356303285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807574560273456485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ad23d25b4b4885b68d55f81569368c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePhaseSo: {fileID: 11400000, guid: d13525b0e29829144b40ef62f2536413, type: 2}
+  transitionPosition: {x: 0, y: -8, z: 0}
+  initialPosition: {x: 0, y: -3.5, z: 0}
+  speedTransition: 0.033
 --- !u!1 &5809076040945029733
 GameObject:
   m_ObjectHideFlags: 0

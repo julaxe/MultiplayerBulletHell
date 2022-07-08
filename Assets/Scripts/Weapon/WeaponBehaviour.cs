@@ -2,19 +2,12 @@ using Bullet;
 using SO;
 using UnityEngine;
 
-namespace DefaultNamespace.Weapon
+namespace Weapon
 {
     public class WeaponBehaviour : MonoBehaviour
     {
         [SerializeField] private WeaponSO weaponSo;
         [SerializeField] private Transform canon;
-
-
-        private void Start()
-        {
-            if (weaponSo.bulletPoolSo.bulletPool != null) return;
-            weaponSo.bulletPoolSo.InitializePool();
-        }
 
         public void Fire()
         {
