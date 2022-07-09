@@ -9,6 +9,8 @@ namespace Enemies
         private readonly NetworkVariable<EnemyNetworkData> _netState = 
             new(writePerm: NetworkVariableWritePermission.Owner);
 
+        public ulong ownerId;
+
         public override void OnNetworkSpawn()
         {
             if (IsOwner) return;
