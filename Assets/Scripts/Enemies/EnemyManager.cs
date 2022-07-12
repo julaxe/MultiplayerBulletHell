@@ -35,7 +35,7 @@ namespace Enemies
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("trigger");
+            NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, enemyPoolSo.enemySo.enemyPrefab);
         }
     }
 }

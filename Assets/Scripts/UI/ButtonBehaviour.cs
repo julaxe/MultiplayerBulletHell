@@ -9,37 +9,27 @@ namespace UI
     {
         [SerializeField] private EnemyPoolSO enemyPool;
         [SerializeField] private GameSettingsSO gameSettings;
+        [SerializeField] private NetworkSO networkSo;
 
         public void SpawnEnemy()
         {
-            SpawnEnemy_ServerRpc(NetworkManager.Singleton.LocalClientId);
+            SpawnEnemy_ServerRpc(networkSo.isPlayer1);
         }
 
         private void SpawnEnemyWithPool()
         {
-            
+
         }
 
-        
-        
-        
-        
         [ServerRpc(RequireOwnership = false)]
-        private void SpawnEnemy_ServerRpc(ulong clientId)
+        private void SpawnEnemy_ServerRpc(bool isPlayer1)
         {
-            var newEnemy = NetworkObjectPool.Singleton.GetNetworkObject(enemyPool.enemySo.enemyPrefab);
-            float randomX = Random.Range(-gameSettings.screenWidth*0.4f, gameSettings.screenWidth*0.4f);
-            newEnemy.transform.position = new Vector3(randomX, -gameSettings.screenHeight*0.5f, 0.0f);
-            newEnemy.GetComponent<EnemyNetwork>().ownerId = clientId;
-            Debug.Log("spawned by: " + clientId);
+            var newEnemy = NetworkObjectPool.Singleton.GetNetworkObject(enemyPool.enemySo.enemyPrefab,
+                new Vector3(-20.0f,0.0f,0.0f), enemyPool.enemySo.enemyPrefab.transform.rotation);
+            newEnemy.GetComponent<EnemyNetwork>().Initialize(isPlayer1);
             if (!newEnemy.IsSpawned)
-                newEnemy.Spawn(true);
+                newEnemy.Spawn();
         }
-
-        [ClientRpc]
-        private void SpawnEnemy_ClientRpc(ulong clientId)
-        {
-            
-        }
+        
     }
 }

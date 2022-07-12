@@ -1,12 +1,13 @@
 using System;
 using SO;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : NetworkBehaviour
     { 
         [SerializeField] private PlayerStatsSO playerStatsSo;
         [SerializeField] private GameSettingsSO gameSettingsSo;
@@ -40,7 +41,8 @@ namespace DefaultNamespace
             
             _inputDirection = input.normalized;
             _desiredVelocity = _inputDirection * playerStatsSo.speed;
-
+            if (!IsHost)
+                _desiredVelocity = _desiredVelocity * -1.0f;
             UpdateFlame();
         }
 
@@ -56,7 +58,7 @@ namespace DefaultNamespace
             //var velRelation = rb.velocity.x / playerStatsSo.speed;
             var desiredAngle = playerStatsSo.maxRotation * _inputDirection.x;
             _currentRotation = Mathf.Lerp(_currentRotation, desiredAngle, playerStatsSo.accRotation);
-            _transform.localRotation = Quaternion.Euler(-90.0f, -_currentRotation, 0.0f);
+            _transform.localRotation = !IsHost ? Quaternion.Euler(90.0f, 180 + _currentRotation, 0.0f) : Quaternion.Euler(-90.0f, -_currentRotation, 0.0f);
         }
 
         private void UpdateFlame()

@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPool: {fileID: 11400000, guid: 6c9688530888d6e4685ae0ae3f8bef10, type: 2}
   gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
+  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!1 &949913301693171118
 GameObject:
   m_ObjectHideFlags: 0

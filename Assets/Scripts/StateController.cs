@@ -1,4 +1,5 @@
 using System;
+using Enemies;
 using SO;
 using Unity.Netcode;
 using UnityEngine;
@@ -10,8 +11,10 @@ public class StateController : NetworkBehaviour
         
     [HideInInspector] public float timer = 0.0f;
     [SerializeField] private WeaponBehaviour weapon;
+    [SerializeField] private EnemyNetwork enemyNetwork;
     private void OnValidate()
     {
+        enemyNetwork = GetComponent<EnemyNetwork>();
         weapon = GetComponent<WeaponBehaviour>();
     }
 

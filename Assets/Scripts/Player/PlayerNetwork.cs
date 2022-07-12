@@ -23,9 +23,15 @@ namespace Player
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
-            if (IsOwner) return;
-            FlipZScale();
-            ChangeToEnemy();
+            if (IsOwner && !IsHost)
+            {
+                ChangePosition();
+            }
+
+            if (!IsOwner)
+            {
+                ChangeToEnemy();
+            }
         }
 
         private void Update()
@@ -45,21 +51,19 @@ namespace Player
             _netState.Value = new PlayerNetworkData()
             {
                 Position = transform.position,
-                Rotation = transform.localRotation.eulerAngles
+                Rotation = transform.localRotation.eulerAngles,
             };
         }
 
         void ReadFromServer()
         {
-            transform.position = _netState.Value.Position * -1.0f;
+            transform.position = _netState.Value.Position;
             transform.localRotation = Quaternion.Euler(_netState.Value.Rotation);
         }
 
-        void FlipZScale()
+        void ChangePosition()
         {
-            var scale = transform.localScale;
-            scale.z *= -1;
-            transform.localScale = scale;
+            transform.position = -transform.position;
         }
 
         void ChangeToEnemy()

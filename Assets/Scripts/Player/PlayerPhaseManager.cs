@@ -9,9 +9,13 @@ namespace Player
     {
         [SerializeField] private GamePhaseSO gamePhaseSo;
 
-        [SerializeField] private Vector3 transitionPosition;
+        [SerializeField] private Vector3 transitionPositionPlayer1;
+        [SerializeField] private Vector3 transitionPositionPlayer2;
 
-        [SerializeField] private Vector3 initialPosition;
+        [SerializeField] private Vector3 initialPositionPlayer1;
+        [SerializeField] private Vector3 initialPositionPlayer2;
+
+        [SerializeField] private NetworkSO networkSo;
 
         [Range(0.0f, 1.0f)] [SerializeField] private float speedTransition = 0.1f;
         //member variables
@@ -44,24 +48,37 @@ namespace Player
 
         private void TransitionIn()
         {
-            if (Vector3.Distance(transform.position, initialPosition) < 0.1f)
+            if (networkSo.isPlayer1)
             {
-                _inTransition = false;
-                _playerInput.enabled = true;
+                LerpTo(initialPositionPlayer1, 0.1f, true);
             }
-
-            transform.position = Vector3.Lerp(transform.position, initialPosition, speedTransition);
+            else
+            {
+                LerpTo(initialPositionPlayer2, 0.1f, true);
+            }
         }
 
         private void TransitionOut()
         {
-            if (Vector3.Distance(transform.position, transitionPosition) < 0.1f)
+            if (networkSo.isPlayer1)
+            {
+                LerpTo(transitionPositionPlayer1, 0.1f, false);
+            }
+            else
+            {
+                LerpTo(transitionPositionPlayer2, 0.1f, false);
+            }
+        }
+
+        private void LerpTo(Vector3 position, float distance, bool playerInput)
+        {
+            if (Vector3.Distance(transform.position, position) < distance)
             {
                 _inTransition = false;
-                _playerInput.enabled = false;
+                _playerInput.enabled = playerInput;
             }
             
-            transform.position = Vector3.Lerp(transform.position, transitionPosition, speedTransition);
+            transform.position = Vector3.Lerp(transform.position, position, speedTransition);
         }
 
         private void StartTransition()

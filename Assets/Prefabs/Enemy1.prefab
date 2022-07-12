@@ -134,6 +134,7 @@ MonoBehaviour:
   currentState: {fileID: 11400000, guid: 75c92200cc63723439b71ad21b255b5d, type: 2}
   timer: 0
   weapon: {fileID: 5815601112850478215}
+  enemyNetwork: {fileID: 1768766355778617841}
 --- !u!114 &5582933822196294240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23aeb0c6eac4d2fb26467fc31ff25eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerId: 0
+  enemyPrefab: {fileID: 7805056323437912549}
+  gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
+  isOwnerOfEnemy: 0
 --- !u!114 &4295845761472616863
 MonoBehaviour:
   m_ObjectHideFlags: 0

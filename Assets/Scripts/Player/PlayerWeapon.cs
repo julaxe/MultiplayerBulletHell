@@ -30,14 +30,7 @@ namespace DefaultNamespace
         {
             var bullet = weaponSo.bulletPoolSo.GetBulletFromPool();
             bullet.transform.position = canon.position;
-            if (IsOwner)
-            {
-                bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
-            }
-            else
-            {
-                bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward * -1.0f);
-            }
+            bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
         }
     }
 }
