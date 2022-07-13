@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using SO;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Bullet
@@ -12,6 +13,13 @@ namespace Bullet
         [SerializeField] private GameObject muzzle;
         [SerializeField] private GameObject hit;
         [SerializeField] private List<ParticleSystem> trails;
+
+        private NetworkObject _networkObject;
+
+        private void Awake()
+        {
+            _networkObject = GetComponent<NetworkObject>();
+        }
 
         public void ShowHit()
         {
@@ -43,7 +51,8 @@ namespace Bullet
         IEnumerator DisableInSeconds(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            bulletPoolSo.AddBullet(gameObject);
+            NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, bulletPoolSo.bulletSo.bulletPrefab);
+            //bulletPoolSo.AddBullet(gameObject);
         }
 
         

@@ -20,8 +20,7 @@ public class StateController : NetworkBehaviour
 
     private void Update()
     {
-        if(IsOwner)
-            currentState.UpdateState(this);
+        currentState.UpdateState(this);
     }
 
     public void Shoot()

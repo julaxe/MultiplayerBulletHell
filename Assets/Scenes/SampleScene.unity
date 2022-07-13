@@ -1030,6 +1030,10 @@ MonoBehaviour:
   PooledPrefabsList:
   - Prefab: {fileID: 7805056323437912549, guid: 4071c631ed7ba9746bada3c32e50ef49, type: 3}
     PrewarmCount: 10
+  - Prefab: {fileID: 3680445273153400923, guid: cbffa5dd4811a1842a1038f94f7515b5, type: 3}
+    PrewarmCount: 10
+  - Prefab: {fileID: 1574537439921776531, guid: d224e5b50e24019429419f4a91b0bd4c, type: 3}
+    PrewarmCount: 10
 --- !u!4 &1978528295
 Transform:
   m_ObjectHideFlags: 0

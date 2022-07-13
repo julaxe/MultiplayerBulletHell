@@ -28,8 +28,10 @@ namespace DefaultNamespace
         [ClientRpc]
         private void Shoot_ClientRpc()
         {
-            var bullet = weaponSo.bulletPoolSo.GetBulletFromPool();
-            bullet.transform.position = canon.position;
+            var bullet = NetworkObjectPool.Singleton.GetNetworkObject(weaponSo.bulletPoolSo.bulletSo.bulletPrefab,
+                canon.position, canon.rotation);
+            
+            
             bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
         }
     }
