@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Bullet
 {
-    public class BulletAnimation : MonoBehaviour
+    public class BulletAnimation : NetworkBehaviour
     {
         [SerializeField] private BulletPoolSO bulletPoolSo;
         [SerializeField] private GameObject muzzle;
@@ -24,8 +24,10 @@ namespace Bullet
         public void ShowHit()
         {
             var hitVFX = Instantiate(hit, transform.position, Quaternion.identity);
-            DisableBulletAnimation();
+            
         }
+
+        
         public void ShowMuzzle()
         {
             var muzzleVFX = Instantiate (muzzle, transform.position, Quaternion.identity);
@@ -41,19 +43,34 @@ namespace Bullet
 
         public void DisableBulletAnimation()
         {
+            if (!IsServer) return;
+            StopTrails_ClientRpc();
+            StartCoroutine(DisableInSeconds(trails[0].main.duration));
+        }
+
+        [ClientRpc]
+        private void StopTrails_ClientRpc()
+        {
             foreach (var trail in trails)
             {
                 trail.Stop();
             }
-            StartCoroutine(DisableInSeconds(trails[0].main.duration));
+        }
+
+        [ClientRpc]
+        public void ShowHit_ClientRpc()
+        {
+            ShowHit();
         }
 
         IEnumerator DisableInSeconds(float seconds)
         {
             yield return new WaitForSeconds(seconds);
+            _networkObject.Despawn();
             NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, bulletPoolSo.bulletSo.bulletPrefab);
-            //bulletPoolSo.AddBullet(gameObject);
         }
+        
+        
 
         
         private void OnGUI()

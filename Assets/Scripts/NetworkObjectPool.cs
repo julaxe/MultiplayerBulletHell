@@ -159,7 +159,7 @@ public class NetworkObjectPool : NetworkBehaviour
 
         go.transform.position = position;
         go.transform.rotation = rotation;
-
+        
         return networkObject;
     }
 

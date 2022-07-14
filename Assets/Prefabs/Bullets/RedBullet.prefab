@@ -9707,7 +9707,8 @@ GameObject:
   - component: {fileID: 1521761997912139406}
   - component: {fileID: 1363786368273646484}
   - component: {fileID: 2778380394307942047}
-  - component: {fileID: -6813517651413043342}
+  - component: {fileID: -6447048353707992089}
+  - component: {fileID: 8780536110878796496}
   m_Layer: 7
   m_Name: RedBullet
   m_TagString: Untagged
@@ -9805,7 +9806,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574537439921776531}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cfcff44cc5645a5bf779deb201cd024, type: 3}
   m_Name: 
@@ -9829,7 +9830,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-6813517651413043342
+--- !u!114 &-6447048353707992089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9838,7 +9839,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574537439921776531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -9854,7 +9855,19 @@ MonoBehaviour:
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   InLocalSpace: 0
-  Interpolate: 0
+  Interpolate: 1
+--- !u!114 &8780536110878796496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574537439921776531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1574758033319440707
 GameObject:
   m_ObjectHideFlags: 0

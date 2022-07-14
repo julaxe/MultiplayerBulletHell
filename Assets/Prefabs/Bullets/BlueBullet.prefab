@@ -19399,7 +19399,8 @@ GameObject:
   - component: {fileID: 3642440206188894587}
   - component: {fileID: 3642440206188894586}
   - component: {fileID: 4592859165301419290}
-  - component: {fileID: -4147788084841895816}
+  - component: {fileID: -7986967582097137571}
+  - component: {fileID: 3299339329639949363}
   m_Layer: 6
   m_Name: BlueBullet
   m_TagString: Untagged
@@ -19497,7 +19498,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3680445273153400923}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cfcff44cc5645a5bf779deb201cd024, type: 3}
   m_Name: 
@@ -19521,7 +19522,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-4147788084841895816
+--- !u!114 &-7986967582097137571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19530,7 +19531,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3680445273153400923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -19546,4 +19547,16 @@ MonoBehaviour:
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   InLocalSpace: 0
-  Interpolate: 0
+  Interpolate: 1
+--- !u!114 &3299339329639949363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680445273153400923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

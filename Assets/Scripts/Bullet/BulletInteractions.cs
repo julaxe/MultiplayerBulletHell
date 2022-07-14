@@ -15,6 +15,20 @@ namespace Bullet
         [SerializeField] private BulletAnimation bulletAnimation;
         [SerializeField] private BulletMovement bulletMovement;
 
+        private NetworkObject _networkObject;
+        private Coroutine _rangeCoroutine;
+
+        private void Awake()
+        {
+            _networkObject = GetComponent<NetworkObject>();
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+            enabled = IsServer;
+        }
+
         private void OnValidate()
         {
             bulletAnimation = GetComponent<BulletAnimation>();
@@ -23,7 +37,7 @@ namespace Bullet
 
         private void OnEnable()
         {
-            StartCoroutine(RangeCoroutine(bulletSo.rangeInSeconds));
+            _rangeCoroutine = StartCoroutine(RangeCoroutine(bulletSo.rangeInSeconds));
         }
 
         public void OnShoot(Vector3 direction)
@@ -41,7 +55,14 @@ namespace Bullet
 
         private void OnTriggerEnter(Collider other)
         {
-            bulletAnimation.ShowHit();
+            bulletAnimation.ShowHit_ClientRpc();
+            ReturnBulletToPool();
+        }
+        private void ReturnBulletToPool()
+        {
+            StopCoroutine(_rangeCoroutine);
+            _networkObject.Despawn();
+            NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, bulletSo.bulletPrefab);
         }
         
     }

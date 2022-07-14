@@ -22,17 +22,28 @@ namespace DefaultNamespace
         [ServerRpc]
         private void Shoot_ServerRpc()
         {
-            Shoot_ClientRpc();
+            var bullet = NetworkObjectPool.Singleton.GetNetworkObject(weaponSo.bulletPoolSo.bulletSo.bulletPrefab,
+                canon.position, canon.rotation);
+
+            bullet.Spawn();
+            Shoot_ClientRpc(bullet.NetworkObjectId);
         }
 
         [ClientRpc]
-        private void Shoot_ClientRpc()
+        private void Shoot_ClientRpc(ulong networkObjectId)
         {
-            var bullet = NetworkObjectPool.Singleton.GetNetworkObject(weaponSo.bulletPoolSo.bulletSo.bulletPrefab,
-                canon.position, canon.rotation);
-            
-            
-            bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
+            var bullet = NetworkManager.SpawnManager.SpawnedObjects[networkObjectId];
+            try
+            {
+                bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
+                bullet.enabled = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
         }
     }
 }
