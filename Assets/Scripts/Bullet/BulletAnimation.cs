@@ -9,13 +9,18 @@ namespace Bullet
 {
     public class BulletAnimation : NetworkBehaviour
     {
-        [SerializeField] private BulletPoolSO bulletPoolSo;
+        [SerializeField] private BulletSO bulletSo;
         [SerializeField] private GameObject muzzle;
         [SerializeField] private GameObject hit;
         [SerializeField] private List<ParticleSystem> trails;
+        [SerializeField] private BulletInteractions bulletInteractions;
 
         private NetworkObject _networkObject;
 
+        private void OnValidate()
+        {
+            bulletInteractions = GetComponent<BulletInteractions>();
+        }
         private void Awake()
         {
             _networkObject = GetComponent<NetworkObject>();
@@ -45,7 +50,7 @@ namespace Bullet
         {
             if (!IsServer) return;
             StopTrails_ClientRpc();
-            StartCoroutine(DisableInSeconds(trails[0].main.duration));
+            StartCoroutine(bulletInteractions.DestroyInSeconds(trails[0].main.duration));
         }
 
         [ClientRpc]
@@ -56,33 +61,7 @@ namespace Bullet
                 trail.Stop();
             }
         }
-
-        [ClientRpc]
-        public void ShowHit_ClientRpc()
-        {
-            ShowHit();
-        }
-
-        IEnumerator DisableInSeconds(float seconds)
-        {
-            yield return new WaitForSeconds(seconds);
-            _networkObject.Despawn();
-            NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, bulletPoolSo.bulletSo.bulletPrefab);
-        }
         
         
-
-        
-        private void OnGUI()
-        {
-            // if (GUI.Button(new Rect(10, 70, 100, 30), "Hit"))
-            // {
-            //     ShowHit();
-            // }
-            // if (GUI.Button(new Rect(10, 110, 100, 30), "Muzzle"))
-            // {
-            //     ShowMuzzle();
-            // }
-        }
     }
 }

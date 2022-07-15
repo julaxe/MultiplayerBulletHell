@@ -9791,7 +9791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45dc29cb220843eeb19a718be617cba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPoolSo: {fileID: 11400000, guid: cc98a404de4298a45a422151f3334ee4, type: 2}
+  bulletSo: {fileID: 11400000, guid: 5edf06f2209019147a120c30e2264613, type: 2}
   muzzle: {fileID: 1252424093267096, guid: fede7bedd0d852844a42392d0db8e8a7, type: 3}
   hit: {fileID: 1312591640859010, guid: b4473bf379aa11541848b07fcf1b6a1f, type: 3}
   trails:
@@ -9799,6 +9799,7 @@ MonoBehaviour:
   - {fileID: 1684716332496411503}
   - {fileID: 1665346190870447913}
   - {fileID: 1665829511394101083}
+  bulletInteractions: {fileID: 1363786368273646484}
 --- !u!114 &1363786368273646484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9855,7 +9856,7 @@ MonoBehaviour:
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   InLocalSpace: 0
-  Interpolate: 1
+  Interpolate: 0
 --- !u!114 &8780536110878796496
 MonoBehaviour:
   m_ObjectHideFlags: 0

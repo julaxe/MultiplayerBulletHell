@@ -25,8 +25,14 @@ namespace Bullet
 
         public override void OnNetworkSpawn()
         {
-            base.OnNetworkSpawn();
-            enabled = IsServer;
+            bulletAnimation.StartVFX();
+            bulletAnimation.ShowMuzzle();
+            StartCoroutine(RangeCoroutine(bulletSo.rangeInSeconds));
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            bulletAnimation.ShowHit();
         }
 
         private void OnValidate()
@@ -34,17 +40,12 @@ namespace Bullet
             bulletAnimation = GetComponent<BulletAnimation>();
             bulletMovement = GetComponent<BulletMovement>();
         }
-
-        private void OnEnable()
-        {
-            _rangeCoroutine = StartCoroutine(RangeCoroutine(bulletSo.rangeInSeconds));
-        }
+        
 
         public void OnShoot(Vector3 direction)
         {
             bulletMovement.SetDirection(direction);
-            bulletAnimation.StartVFX();
-            bulletAnimation.ShowMuzzle();
+            
         }
 
         IEnumerator RangeCoroutine(float seconds)
@@ -55,15 +56,20 @@ namespace Bullet
 
         private void OnTriggerEnter(Collider other)
         {
-            bulletAnimation.ShowHit_ClientRpc();
+            if (!IsServer) return;
             ReturnBulletToPool();
         }
         private void ReturnBulletToPool()
         {
-            StopCoroutine(_rangeCoroutine);
             _networkObject.Despawn();
-            NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, bulletSo.bulletPrefab);
         }
+
+        public IEnumerator DestroyInSeconds(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            _networkObject.Despawn();
+        }
+        
         
     }
 }
