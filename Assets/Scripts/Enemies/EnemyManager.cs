@@ -43,15 +43,22 @@ namespace Enemies
 
         private void Update()
         {
+            if (!IsServer) return;
             if (Mathf.Abs(transform.position.y) > gameSettingsSo.screenHeight)
             {
                 //transform.position = new Vector3(0.0f, gameSettingsSo.screenHeight * 0.5f, 0.0f);
-                NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, enemyPoolSo.enemySo.enemyPrefab);
+                ReturnToBulletPool();
             }
         }
         private void OnTriggerEnter(Collider other)
         {
-            NetworkObjectPool.Singleton.ReturnNetworkObject(_networkObject, enemyPoolSo.enemySo.enemyPrefab);
+            if (!IsServer) return;
+            ReturnToBulletPool();
+        }
+
+        private void ReturnToBulletPool()
+        {
+            _networkObject.Despawn();
         }
     }
 }

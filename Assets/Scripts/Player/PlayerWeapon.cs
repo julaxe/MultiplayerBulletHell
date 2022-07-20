@@ -1,12 +1,10 @@
-using System;
 using Bullet;
 using SO;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace DefaultNamespace
+namespace Player
 {
     public class PlayerWeapon : NetworkBehaviour
     {
