@@ -13,3 +13,11 @@ MonoBehaviour:
   m_Name: NetworkSO
   m_EditorClassIdentifier: 
   isPlayer1: 1
+  player1Info: {fileID: 11400000, guid: 04161c2ab4efa7044929fe6e7f64e1bf, type: 2}
+  player2Info: {fileID: 11400000, guid: 8c931afcc0cb23848bc32964259d7fcc, type: 2}
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  scoreChanged:
+    m_PersistentCalls:
+      m_Calls: []

@@ -11,6 +11,21 @@ namespace Player
         public WeaponSO weaponSo;
         [SerializeField] private Transform canon;
 
+        [SerializeField] private WeaponSO enemyWeapon;
+        public override void OnNetworkSpawn()
+        {
+            if (!IsOwner)
+            {
+                ChangeToEnemy();
+            }
+        }
+        void ChangeToEnemy()
+        {
+            weaponSo = enemyWeapon;
+            gameObject.layer = LayerMask.NameToLayer("Enemy");
+            gameObject.tag = "Enemy";
+        }
+        
         private void OnFire(InputValue value)
         {
             if (!IsOwner) return;
@@ -18,8 +33,8 @@ namespace Player
         }
 
         
-        
-       [ServerRpc]
+
+        [ServerRpc]
         private void Shoot_ServerRpc()
         {
             var bullet = NetworkObjectPool.Singleton.GetNetworkObject(weaponSo.bulletPoolSo.bulletSo.bulletPrefab,

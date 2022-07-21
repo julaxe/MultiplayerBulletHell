@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6201b8801fe4211b642c82bf0a218c0, type: 3}
-  m_Name: PlayerHealthSO
+  m_Script: {fileID: 11500000, guid: fcf77d9e95a149128b99e98db32b681e, type: 3}
+  m_Name: Player1Info
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  takeDamageEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  currentHealth: 100
+  maxHealth: 100
+  score: 0

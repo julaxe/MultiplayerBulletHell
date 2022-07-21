@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SO
 {
@@ -6,5 +7,7 @@ namespace SO
     public class NetworkSO : ScriptableObject
     {
         public bool isPlayer1 = false;
+        public PlayerInfo player1Info;
+        public PlayerInfo player2Info;
     }
 }

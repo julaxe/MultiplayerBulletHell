@@ -7,30 +7,16 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerNetwork : NetworkBehaviour
+    public class PlayerNetworkTransform : NetworkBehaviour
     {
         private readonly NetworkVariable<PlayerNetworkData> _netState =
             new(writePerm: NetworkVariableWritePermission.Owner);
-
-        [SerializeField] private WeaponSO enemyWeapon;
-
-        private PlayerWeapon _playerWeapon;
-        private void Awake()
-        {
-            _playerWeapon = GetComponent<PlayerWeapon>();
-        }
-
+        
         public override void OnNetworkSpawn()
         {
-            base.OnNetworkSpawn();
             if (IsOwner && !IsHost)
             {
                 ChangePosition();
-            }
-
-            if (!IsOwner)
-            {
-                ChangeToEnemy();
             }
         }
 
@@ -66,11 +52,7 @@ namespace Player
             transform.position = -transform.position;
         }
 
-        void ChangeToEnemy()
-        {
-            _playerWeapon.weaponSo = enemyWeapon;
-            gameObject.layer = LayerMask.NameToLayer("Enemy");
-        }
+        
         
         struct PlayerNetworkData : INetworkSerializable
         {
