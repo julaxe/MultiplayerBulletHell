@@ -11,7 +11,7 @@ namespace Enemies
     {
         [SerializeField] private EnemyPoolSO enemyPoolSo;
         [SerializeField] private GameSettingsSO gameSettingsSo;
-        
+        [SerializeField] private NetworkSO networkSo;
 
         private NetworkObject _networkObject;
 
@@ -53,9 +53,30 @@ namespace Enemies
         private void OnTriggerEnter(Collider other)
         {
             if (!IsServer) return;
+            //manage collision (score)
+            if (other.CompareTag("Player1")) //bullet from player 1
+            {
+                Score_ClientRpc(10, true);
+            }
+            else if (other.CompareTag("Player2"))
+            {
+                Score_ClientRpc(10, false);
+            }
             ReturnToBulletPool();
         }
 
+        [ClientRpc]
+        private void Score_ClientRpc(int value, bool isPlayer1)
+        {
+            if (isPlayer1)
+            {
+                networkSo.player1Info.score += value;
+            }
+            else
+            {
+                networkSo.player2Info.score += value;
+            }
+        }
         private void ReturnToBulletPool()
         {
             _networkObject.Despawn();

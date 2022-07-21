@@ -10,7 +10,7 @@ public class StateController : NetworkBehaviour
     public State currentState;
         
     [HideInInspector] public float timer = 0.0f;
-    [SerializeField] private WeaponBehaviour weapon;
+    [SerializeField] public WeaponBehaviour weapon;
     [SerializeField] private EnemyNetwork enemyNetwork;
     private void OnValidate()
     {
@@ -22,9 +22,5 @@ public class StateController : NetworkBehaviour
     {
         currentState.UpdateState(this);
     }
-
-    public void Shoot()
-    {
-        weapon.Fire();
-    }
+    
 }

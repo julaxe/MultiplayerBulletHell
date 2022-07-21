@@ -9711,7 +9711,7 @@ GameObject:
   - component: {fileID: 8780536110878796496}
   m_Layer: 6
   m_Name: RedBullet
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

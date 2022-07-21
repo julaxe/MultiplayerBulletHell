@@ -18,10 +18,16 @@ namespace Player
             {
                 ChangeToEnemy();
             }
+            else
+            {
+                //is player
+                weaponSo.bulletSo.bulletPrefab.tag = "Player1";
+            }
         }
         void ChangeToEnemy()
         {
             weaponSo = enemyWeapon;
+            weaponSo.bulletSo.bulletPrefab.tag = "Player2";
         }
         
         private void OnFire(InputValue value)

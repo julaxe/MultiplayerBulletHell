@@ -17,7 +17,7 @@ namespace SO
         {
             if (controller.timer > waitTime)
             {
-                controller.Shoot();
+                controller.weapon.Fire();
                 controller.timer = 0.0f;
             }
 

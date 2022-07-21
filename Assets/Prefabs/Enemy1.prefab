@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5582933822196294240}
   - component: {fileID: 1768766355778617841}
   - component: {fileID: 4295845761472616863}
+  - component: {fileID: -4376004572835395669}
   m_Layer: 3
   m_Name: Enemy1
   m_TagString: Untagged
@@ -163,10 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23aeb0c6eac4d2fb26467fc31ff25eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 0
-  enemyPrefab: {fileID: 7805056323437912549}
   gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
-  isOwnerOfEnemy: 0
 --- !u!114 &4295845761472616863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +180,32 @@ MonoBehaviour:
   enemyPoolSo: {fileID: 11400000, guid: 6c9688530888d6e4685ae0ae3f8bef10, type: 2}
   gameSettingsSo: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
   networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
+--- !u!114 &-4376004572835395669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7805056323437912549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 0
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 0
 --- !u!1 &8582843008516544075
 GameObject:
   m_ObjectHideFlags: 0
