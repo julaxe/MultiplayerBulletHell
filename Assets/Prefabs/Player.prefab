@@ -155,6 +155,7 @@ MonoBehaviour:
   weaponSo: {fileID: 11400000, guid: b15216b468d195e4c99d62640255445d, type: 2}
   canon: {fileID: 5809076041192971576}
   enemyWeapon: {fileID: 11400000, guid: b4641f625226ed540bcb561e8dc8291a, type: 2}
+  fireRateInSeconds: 0.2
 --- !u!64 &5829974573209080089
 MeshCollider:
   m_ObjectHideFlags: 0

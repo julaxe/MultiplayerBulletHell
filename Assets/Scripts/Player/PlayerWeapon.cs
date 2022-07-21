@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Bullet;
 using SO;
 using Unity.Netcode;
@@ -10,8 +12,11 @@ namespace Player
     {
         public WeaponSO weaponSo;
         [SerializeField] private Transform canon;
-
         [SerializeField] private WeaponSO enemyWeapon;
+
+        [SerializeField] private float fireRateInSeconds;
+
+        private float _timer;
         public override void OnNetworkSpawn()
         {
             if (!IsOwner)
@@ -28,6 +33,17 @@ namespace Player
         {
             weaponSo = enemyWeapon;
             weaponSo.bulletSo.bulletPrefab.tag = "Player2";
+        }
+
+        private void FixedUpdate()
+        {
+            if (!IsOwner) return;
+            if (_timer >= fireRateInSeconds)
+            {
+                _timer = 0.0f;
+                Shoot_ServerRpc();
+            }
+            _timer += Time.fixedDeltaTime;
         }
         
         private void OnFire(InputValue value)
