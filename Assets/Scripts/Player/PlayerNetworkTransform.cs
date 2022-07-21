@@ -14,10 +14,8 @@ namespace Player
         
         public override void OnNetworkSpawn()
         {
-            if (IsOwner && !IsHost)
-            {
-                ChangePosition();
-            }
+            if (NetworkManager.Singleton.LocalClientId.Equals(0)) return; //if is player 1
+            ChangePosition();
         }
 
         private void Update()
@@ -50,6 +48,7 @@ namespace Player
         void ChangePosition()
         {
             transform.position = -transform.position;
+            transform.localRotation =  Quaternion.Euler(90.0f, 180, 0.0f);
         }
 
         
