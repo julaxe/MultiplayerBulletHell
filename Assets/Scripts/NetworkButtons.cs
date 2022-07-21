@@ -11,6 +11,15 @@ public class NetworkButtons : MonoBehaviour
 {
     [SerializeField] private CameraBehaviour _cameraBehaviour;
     [SerializeField] private NetworkSO networkSo;
+    [SerializeField] private bool isTesting;
+
+    private void Start()
+    {
+        if (!isTesting) return;
+        NetworkManager.Singleton.StartHost();
+        networkSo.isPlayer1 = true;
+    }
+
     private void OnGUI()
     {
         GUILayout.BeginArea(new Rect(10,10,300,300));
