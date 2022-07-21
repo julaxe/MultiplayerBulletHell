@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RedBulletWeapon
   m_EditorClassIdentifier: 
   weaponName: Red Bullet Weapon
-  bulletPoolSo: {fileID: 11400000, guid: cc98a404de4298a45a422151f3334ee4, type: 2}
+  bulletSo: {fileID: 11400000, guid: 5edf06f2209019147a120c30e2264613, type: 2}
   ammo: 50

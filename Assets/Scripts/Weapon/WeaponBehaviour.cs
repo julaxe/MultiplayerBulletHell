@@ -11,9 +11,11 @@ namespace Weapon
 
         public void Fire()
         {
-            var bullet = weaponSo.bulletPoolSo.GetBulletFromPool();
-            bullet.transform.position = canon.position;
-            bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
+            // var bullet = weaponSo.bulletPoolSo.GetBulletFromPool();
+            // bullet.transform.position = canon.position;
+            // bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
+            
+            Debug.Log("Weapon Fire!");
         }
     }
 }

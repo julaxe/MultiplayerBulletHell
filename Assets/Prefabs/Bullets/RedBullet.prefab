@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1572246141746593907}
   - component: {fileID: 1684716332496411503}
   - component: {fileID: 1664710357881077283}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: GlowBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4857,7 +4857,7 @@ GameObject:
   - component: {fileID: 1571471604869738853}
   - component: {fileID: 1666284586611486471}
   - component: {fileID: 1665705768260112591}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: MainBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9709,7 +9709,7 @@ GameObject:
   - component: {fileID: 2778380394307942047}
   - component: {fileID: -6447048353707992089}
   - component: {fileID: 8780536110878796496}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: RedBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9881,7 +9881,7 @@ GameObject:
   - component: {fileID: 1571289714196790881}
   - component: {fileID: 1665346190870447913}
   - component: {fileID: 1665574178672084951}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14727,7 +14727,7 @@ GameObject:
   - component: {fileID: 1571948563020900503}
   - component: {fileID: 1665829511394101083}
   - component: {fileID: 1664241167318749143}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

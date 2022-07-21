@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BlueBulletWeapon
   m_EditorClassIdentifier: 
   weaponName: First Weapon
-  bulletPoolSo: {fileID: 11400000, guid: f6f91b5d46630744fb74d81126df935c, type: 2}
+  bulletSo: {fileID: 11400000, guid: 1a4f63e35952c0645a6dfa8774627bd6, type: 2}
   ammo: 30

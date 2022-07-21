@@ -58,8 +58,7 @@ namespace Bullet
         private void OnTriggerEnter(Collider other)
         {
             if (!IsServer) return;
-            var isPlayer1 = other.CompareTag("Player");
-            DoDamage_ClientRpc(10.0f, isPlayer1);
+            
             ReturnBulletToPool();
         }
         private void ReturnBulletToPool()
@@ -67,18 +66,7 @@ namespace Bullet
             _networkObject.Despawn();
         }
 
-        [ClientRpc]
-        private void DoDamage_ClientRpc(float damage, bool isPlayer1)
-        {
-            if (isPlayer1)
-            {
-                networkSo.player1Info.TakeDamage(damage);
-            }
-            else
-            {
-                networkSo.player2Info.TakeDamage(damage);
-            }
-        }
+       
 
         public IEnumerator DestroyInSeconds(float seconds)
         {

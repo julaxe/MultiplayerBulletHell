@@ -22,8 +22,6 @@ namespace Player
         void ChangeToEnemy()
         {
             weaponSo = enemyWeapon;
-            gameObject.layer = LayerMask.NameToLayer("Enemy");
-            gameObject.tag = "Enemy";
         }
         
         private void OnFire(InputValue value)
@@ -37,7 +35,7 @@ namespace Player
         [ServerRpc]
         private void Shoot_ServerRpc()
         {
-            var bullet = NetworkObjectPool.Singleton.GetNetworkObject(weaponSo.bulletPoolSo.bulletSo.bulletPrefab,
+            var bullet = NetworkObjectPool.Singleton.GetNetworkObject(weaponSo.bulletSo.bulletPrefab,
                 canon.position, canon.rotation);
             bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
             bullet.Spawn();

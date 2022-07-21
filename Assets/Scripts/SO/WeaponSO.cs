@@ -6,7 +6,7 @@ namespace SO
     public class WeaponSO : ScriptableObject
     {
         public  string weaponName;
-        public BulletPoolSO bulletPoolSo;
+        public BulletSO bulletSo;
         public int ammo;
     }
 }
