@@ -11,7 +11,7 @@ namespace Player
         {
             if (_isMoving)
             {
-                Vector2 positionOnScreen = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector2 positionOnScreen = Camera.main.ScreenToWorldPoint(Touchscreen.current.primaryTouch.position.ReadValue());
                 transform.position = positionOnScreen;
             }
         }

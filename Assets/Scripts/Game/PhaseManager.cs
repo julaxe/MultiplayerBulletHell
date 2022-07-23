@@ -25,7 +25,7 @@ public class PhaseManager : NetworkBehaviour
 
     private void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(10,10,50,50));
+        GUILayout.BeginArea(new Rect(50,50,50,50));
         if (GUILayout.Button("Phase")) ChangePhase_ServerRpc();
         GUILayout.EndArea();
     }

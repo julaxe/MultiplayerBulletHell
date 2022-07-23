@@ -17,7 +17,6 @@ namespace SO.Actions
         private void CheckForTouchScreen()
         {
             bool touchPosition = Touchscreen.current.primaryTouch.press.isPressed;
-            Debug.Log(touchPosition);
         }
     }
 }
