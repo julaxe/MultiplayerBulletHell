@@ -22,7 +22,6 @@ namespace SO
             int intPhase = (int) currentPhase;
             var nextPhase = (intPhase + 1) % 2;
             currentPhase = (Phase) nextPhase;
-            Debug.Log(currentPhase == Phase.Shooting ? "Shooting" : "Spawning");
             phaseChanged?.Invoke();
         }
 

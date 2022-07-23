@@ -13,6 +13,7 @@ namespace Player
         public WeaponSO weaponSo;
         [SerializeField] private Transform canon;
         [SerializeField] private WeaponSO enemyWeapon;
+        [SerializeField] private GamePhaseSO gamePhaseSo;
 
         [SerializeField] private float fireRateInSeconds;
 
@@ -38,6 +39,8 @@ namespace Player
         private void FixedUpdate()
         {
             if (!IsOwner) return;
+            if (gamePhaseSo.currentPhase != GamePhaseSO.Phase.Shooting) return;
+            
             if (_timer >= fireRateInSeconds)
             {
                 _timer = 0.0f;

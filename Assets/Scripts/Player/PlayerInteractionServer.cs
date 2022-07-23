@@ -17,7 +17,6 @@ namespace Player
             networkSo.player2Info.ResetValues();
             playerNumberCounter += 1;
             playerNumberId = playerNumberCounter;
-            Debug.Log(playerNumberId);
         }
 
         private void OnTriggerEnter(Collider other)
