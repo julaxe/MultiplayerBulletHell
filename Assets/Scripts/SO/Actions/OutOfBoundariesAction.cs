@@ -1,7 +1,7 @@
-using DefaultNamespace;
+using Enemies;
 using UnityEngine;
 
-namespace SO
+namespace SO.Actions
 {
     [CreateAssetMenu(fileName = "OutOfBoundariesAction", menuName = "PluggableAI/Actions/OutOfBoundaries", order = 0)]
     public class OutOfBoundariesAction : Action

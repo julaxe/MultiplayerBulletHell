@@ -7,7 +7,7 @@ namespace UI
 {
     public class ButtonBehaviour : NetworkBehaviour
     {
-        [SerializeField] private EnemyPoolSO enemyPool;
+        [SerializeField] private EnemySO enemySo;
         [SerializeField] private GameSettingsSO gameSettings;
         [SerializeField] private NetworkSO networkSo;
 
@@ -21,8 +21,8 @@ namespace UI
         private void SpawnEnemy_ServerRpc(bool isPlayer1)
         {
             float randomX = Random.Range(-gameSettings.screenWidth*0.4f, gameSettings.screenWidth*0.4f);
-            var newEnemy = NetworkObjectPool.Singleton.GetNetworkObject(enemyPool.enemySo.enemyPrefab,
-                new Vector3(-20.0f,0.0f,0.0f), enemyPool.enemySo.enemyPrefab.transform.rotation);
+            var newEnemy = NetworkObjectPool.Singleton.GetNetworkObject(enemySo.enemyPrefab,
+                new Vector3(-20.0f,0.0f,0.0f), enemySo.enemyPrefab.transform.rotation);
             newEnemy.GetComponent<EnemyManager>().Initialize(randomX, isPlayer1);
             newEnemy.Spawn();
         }

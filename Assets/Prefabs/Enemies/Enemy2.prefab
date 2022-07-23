@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bd9e38204a45789ad5815669736c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 75c92200cc63723439b71ad21b255b5d, type: 2}
+  currentState: {fileID: 11400000, guid: 877e09c8425252c4c91f1b71f86a8059, type: 2}
   timer: 0
   weapon: {fileID: 5815601112850478215}
   enemyNetwork: {fileID: 1768766355778617841}

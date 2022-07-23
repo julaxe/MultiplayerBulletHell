@@ -9,7 +9,6 @@ namespace Enemies
 {
     public class EnemyManager : NetworkBehaviour
     {
-        [SerializeField] private EnemyPoolSO enemyPoolSo;
         [SerializeField] private GameSettingsSO gameSettingsSo;
         [SerializeField] private NetworkSO networkSo;
 

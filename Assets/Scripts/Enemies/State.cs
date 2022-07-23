@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using DefaultNamespace;
 using UnityEngine;
 
-namespace SO
+namespace Enemies
 {
     [CreateAssetMenu(fileName = "State", menuName = "PluggableAI/State", order = 0)]
     public class State : ScriptableObject

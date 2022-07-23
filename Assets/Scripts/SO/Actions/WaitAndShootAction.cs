@@ -1,8 +1,7 @@
-using System.Collections;
-using DefaultNamespace;
 using UnityEngine;
+using Enemies;
 
-namespace SO
+namespace SO.Actions
 {
     [CreateAssetMenu(fileName = "WaitAndShoot", menuName = "PluggableAI/Actions/WaitAndShoot", order = 0)]
     public class WaitAndShootAction : Action

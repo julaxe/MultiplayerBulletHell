@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0adf07212615104aa62424963ffc366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPool: {fileID: 11400000, guid: 6c9688530888d6e4685ae0ae3f8bef10, type: 2}
+  enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
   gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
   networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!1 &949913301693171118

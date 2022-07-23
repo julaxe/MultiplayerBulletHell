@@ -1,7 +1,6 @@
-using DefaultNamespace;
 using UnityEngine;
 
-namespace SO
+namespace Enemies
 {
     public abstract class Action : ScriptableObject
     {
