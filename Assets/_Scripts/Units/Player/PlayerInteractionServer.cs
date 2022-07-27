@@ -16,12 +16,13 @@ namespace Player
             PlayersManager.Instance.player2Info.ResetValues();
             playerNumberCounter += 1;
             playerNumberId = playerNumberCounter;
+            //GameManager.Instance.ChangeState(PlayersManager.Instance.isPlayer1 ? GameState.Shooting : GameState.Spawning);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!IsServer) return;
-            Debug.Log("Collision with player " + playerNumberId + " with " + other.name);
+            //Debug.Log("Collision with player " + playerNumberId + " with " + other.name);
             DoDamage_ClientRpc(10.0f, playerNumberId == 1);
         }
         

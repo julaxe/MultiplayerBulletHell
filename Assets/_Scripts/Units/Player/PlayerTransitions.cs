@@ -20,9 +20,9 @@ namespace _Scripts.Units.Player
         
        
 
-        private void Awake()
+        private void Start()
         {
-            GameManager.OnAfterStateChanged += StartTransition;
+            GameManager.OnBeforeStateChanged += StartTransition;
         }
 
         private void Update()

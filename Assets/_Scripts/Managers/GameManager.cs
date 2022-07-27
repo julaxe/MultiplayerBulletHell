@@ -12,6 +12,7 @@ namespace _Scripts.Managers
 
         public GameSettingsSO gameSettings;
         [SerializeField] private Canvas loginMenuCanvas;
+        [SerializeField] private Canvas lobbyCanvas;
         [SerializeField] private Canvas playerCanvas;
         [SerializeField] private Canvas spawningCanvas;
         [SerializeField] private Canvas phaseTestingCanvas;
@@ -55,6 +56,7 @@ namespace _Scripts.Managers
             // Do some start setup, could be environment, cinematics etc
 
             loginMenuCanvas.enabled = true;
+            lobbyCanvas.enabled = false;
             playerCanvas.enabled = false;
             spawningCanvas.enabled = false;
             phaseTestingCanvas.enabled = false;
@@ -63,19 +65,25 @@ namespace _Scripts.Managers
         private void HandleLobby() 
         {
             loginMenuCanvas.enabled = false;
-            playerCanvas.enabled = true;
-            phaseTestingCanvas.enabled = true;
+            lobbyCanvas.enabled = true;
+            playerCanvas.enabled = false;
+            phaseTestingCanvas.enabled = false;
             spawningCanvas.enabled = false;
-            ChangeState(PlayersManager.Instance.isPlayer1 ? GameState.Shooting : GameState.Spawning);
         }
 
         private void HandleShooting()
         {
+            lobbyCanvas.enabled = false;
+            playerCanvas.enabled = true;
+            phaseTestingCanvas.enabled = true;
             spawningCanvas.enabled = false;
         }
 
         private void HandleSpawning()
         {
+            lobbyCanvas.enabled = false;
+            playerCanvas.enabled = true;
+            phaseTestingCanvas.enabled = true;
             spawningCanvas.enabled = true;
         }
     }

@@ -19,9 +19,9 @@ namespace _Scripts.Units.Player
         private float _timer;
         private bool _isShooting;
 
-        private void Awake()
+        private void Start()
         {
-            GameManager.OnAfterStateChanged += OnChangeState;
+            GameManager.OnBeforeStateChanged += OnChangeState;
         }
 
         public override void OnDestroy()

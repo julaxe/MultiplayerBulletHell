@@ -1,10 +1,9 @@
 using _Scripts.Managers;
 using Unity.Netcode;
-using UnityEngine;
 
 namespace _Scripts.UI
 {
-    public class PhaseTestingUI : MonoBehaviour
+    public class PhaseTestingUI : NetworkBehaviour
     {
         public void ChangePhasePressed()
         {
@@ -20,6 +19,7 @@ namespace _Scripts.UI
         [ClientRpc]
         private void ChangePhase_ClientRpc()
         {
+            print("Change State BROOOO");
             if (GameManager.Instance.State == GameState.Shooting)
             {
                 GameManager.Instance.ChangeState(GameState.Spawning);

@@ -1,12 +1,18 @@
 using System;
 using _Scripts.Managers;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerMovementOnScreen : MonoBehaviour
+    public class PlayerMovementOnScreen : NetworkBehaviour
     {
+        public override void OnNetworkSpawn()
+        {
+            enabled = IsOwner;
+        }
+
         private bool _isMoving;
         private void FixedUpdate()
         {
