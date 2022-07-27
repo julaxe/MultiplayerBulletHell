@@ -11,11 +11,8 @@ using UnityEngine.Assertions;
 /// Boss Room uses this for projectiles. In theory it should use this for imps too, but we wanted to show vanilla spawning vs pooled spawning.
 /// Hooks to NetworkManager's prefab handler to intercept object spawning and do custom actions
 /// </summary>
-public class NetworkObjectPool : NetworkBehaviour
+public class NetworkObjectPool : PersistentSingleton<NetworkObjectPool>
 {
-    private static NetworkObjectPool _instance;
-
-    public static NetworkObjectPool Singleton { get { return _instance; } }
 
     [SerializeField]
     List<PoolConfigObject> PooledPrefabsList;
@@ -25,18 +22,7 @@ public class NetworkObjectPool : NetworkBehaviour
     Dictionary<GameObject, Queue<NetworkObject>> pooledObjects = new Dictionary<GameObject, Queue<NetworkObject>>();
 
     private bool m_HasInitialized = false;
-
-    public void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
+    
 
     public override void OnNetworkSpawn()
     {

@@ -11,10 +11,7 @@ public class PhaseManager : NetworkBehaviour
     [SerializeField] private Canvas canvas;
     private void Awake()
     {
-       
         gamePhaseSo.phaseChanged.AddListener(UpdatePhase);
-        canvas = GetComponentInChildren<Canvas>();
-        canvas.enabled = false;
     }
 
     public override void OnNetworkSpawn()
