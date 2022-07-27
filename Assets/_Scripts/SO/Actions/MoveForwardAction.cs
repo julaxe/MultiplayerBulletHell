@@ -1,7 +1,7 @@
 using Enemies;
 using UnityEngine;
 
-namespace SO.Actions
+namespace _Scripts.SO.Actions
 {
     [CreateAssetMenu(fileName = "MoveForwardAction", menuName = "PluggableAI/Actions/MoveForwardAction", order = 0)]
     public class MoveForwardAction : Action

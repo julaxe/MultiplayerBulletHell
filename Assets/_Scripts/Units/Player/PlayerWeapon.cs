@@ -1,19 +1,16 @@
-using System;
-using System.Collections;
+using _Scripts.Managers;
 using Bullet;
 using SO;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace Player
+namespace _Scripts.Units.Player
 {
     public class PlayerWeapon : NetworkBehaviour
     {
         public WeaponSO weaponSo;
         [SerializeField] private Transform canon;
         [SerializeField] private WeaponSO enemyWeapon;
-        [SerializeField] private GamePhaseSO gamePhaseSo;
 
         [SerializeField] private float fireRateInSeconds;
 
@@ -39,7 +36,7 @@ namespace Player
         private void FixedUpdate()
         {
             if (!IsOwner) return;
-            if (gamePhaseSo.currentPhase != GamePhaseSO.Phase.Shooting) return;
+            if (GameManager.Instance.State != GameState.Shooting) return;
             
             if (_timer >= fireRateInSeconds)
             {
@@ -48,13 +45,6 @@ namespace Player
             }
             _timer += Time.fixedDeltaTime;
         }
-        
-        private void OnFire(InputValue value)
-        {
-            if (!IsOwner) return;
-            Shoot_ServerRpc();
-        }
-
         
 
         [ServerRpc]

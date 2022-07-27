@@ -634,6 +634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1851309464508127294, guid: 45118c63721f47e43849c2136841ac17, type: 3}
+      propertyPath: _cameraBehaviour
+      value: 
+      objectReference: {fileID: 519420033}
     - target: {fileID: 1851309464508127295, guid: 45118c63721f47e43849c2136841ac17, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1218,7 +1222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 1433680300}
   scoreText: {fileID: 1068867918}
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!1 &1205427593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,11 +1725,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1673330407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f374d2db57fe67041900c91abd067fc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7efb1ae7a61b254489a4d92a2d5a7065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamePhaseSo: {fileID: 11400000, guid: d13525b0e29829144b40ef62f2536413, type: 2}
-  canvas: {fileID: 321815510}
+  gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
 --- !u!1 &1689110771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1867,53 @@ Transform:
   m_Father: {fileID: 1619827065}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1938688119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938688120}
+  - component: {fileID: 1938688121}
+  m_Layer: 0
+  m_Name: PlayersManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938688120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938688119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1943821663}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1938688121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938688119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21744d54c15461c858da6f29798530d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Info: {fileID: 11400000, guid: 04161c2ab4efa7044929fe6e7f64e1bf, type: 2}
+  player2Info: {fileID: 11400000, guid: 8c931afcc0cb23848bc32964259d7fcc, type: 2}
+  isPlayer1: 0
 --- !u!1 &1943821662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,6 +1944,7 @@ Transform:
   m_Children:
   - {fileID: 1673330408}
   - {fileID: 8275583432928033977}
+  - {fileID: 1938688120}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2505,8 +2555,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
-  gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!1001 &8275583432928033976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2586,8 +2634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
-  gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!114 &8988910141074006705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2601,5 +2647,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
-  gameSettings: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}

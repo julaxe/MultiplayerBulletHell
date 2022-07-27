@@ -1,12 +1,10 @@
 {
-    "name": "Game",
+    "name": "Managers",
     "rootNamespace": "",
     "references": [
-        "GUID:9e45b44602e8b43439f259b41b2ff031",
-        "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:ed4a1e79204044840893ff4fdaaa6737",
-        "GUID:3710d709bbb2919488b48404699becb8",
-        "GUID:5b24475e1c22f2c45b12bcf09bdb63a5"
+        "GUID:5b24475e1c22f2c45b12bcf09bdb63a5",
+        "GUID:1491147abca9d7d4bb7105af628b223e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

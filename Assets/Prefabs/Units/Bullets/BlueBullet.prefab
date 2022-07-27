@@ -19507,7 +19507,6 @@ MonoBehaviour:
   bulletSo: {fileID: 11400000, guid: 1a4f63e35952c0645a6dfa8774627bd6, type: 2}
   bulletAnimation: {fileID: 3642440206188894585}
   bulletMovement: {fileID: 3642440206188894590}
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!114 &4592859165301419290
 MonoBehaviour:
   m_ObjectHideFlags: 0

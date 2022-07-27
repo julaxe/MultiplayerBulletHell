@@ -1,21 +1,18 @@
 using System;
-using SO;
+using _Scripts.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace _Scripts.Units.Player
 {
-    public class PlayerPhaseManager : MonoBehaviour
+    public class PlayerTransitions : MonoBehaviour
     {
-        [SerializeField] private GamePhaseSO gamePhaseSo;
-
         [SerializeField] private Vector3 transitionPositionPlayer1;
         [SerializeField] private Vector3 transitionPositionPlayer2;
 
         [SerializeField] private Vector3 initialPositionPlayer1;
         [SerializeField] private Vector3 initialPositionPlayer2;
-
-        [SerializeField] private NetworkSO networkSo;
+        
 
         [Range(0.0f, 1.0f)] [SerializeField] private float speedTransition = 0.1f;
         //member variables
@@ -26,29 +23,29 @@ namespace Player
 
         private void Awake()
         {
-            gamePhaseSo.phaseChanged.AddListener(StartTransition);
+            GameManager.OnAfterStateChanged += StartTransition;
             _playerInput = GetComponent<PlayerInput>();
         }
 
         private void Update()
         {
             if (!_inTransition) return;
-            switch (gamePhaseSo.currentPhase)
+            switch (GameManager.Instance.State)
             {
-                case GamePhaseSO.Phase.Shooting:
+                case GameState.Shooting:
                     TransitionIn();
                     break;
-                case GamePhaseSO.Phase.Spawning:
+                case GameState.Spawning:
                     TransitionOut();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    break;
             }
         }
 
         private void TransitionIn()
         {
-            if (networkSo.isPlayer1)
+            if (PlayersManager.Instance.isPlayer1)
             {
                 LerpTo(initialPositionPlayer1, 0.1f, true);
             }
@@ -60,7 +57,7 @@ namespace Player
 
         private void TransitionOut()
         {
-            if (networkSo.isPlayer1)
+            if (PlayersManager.Instance.isPlayer1)
             {
                 LerpTo(transitionPositionPlayer1, 0.1f, false);
             }
@@ -81,9 +78,10 @@ namespace Player
             transform.position = Vector3.Lerp(transform.position, position, speedTransition);
         }
 
-        private void StartTransition()
+        private void StartTransition(GameState state)
         {
-            _inTransition = true;
+            if(state == GameState.Shooting || state == GameState.Spawning)
+                _inTransition = true;
         }
     }
 }

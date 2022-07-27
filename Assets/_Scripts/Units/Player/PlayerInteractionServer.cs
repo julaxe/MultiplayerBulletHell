@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Managers;
 using SO;
 using Unity.Netcode;
 using UnityEngine;
@@ -7,14 +8,12 @@ namespace Player
 {
     public class PlayerInteractionServer : NetworkBehaviour
     {
-        [SerializeField] private NetworkSO networkSo;
-
         private static int playerNumberCounter = 0;
         private int playerNumberId;
         public override void OnNetworkSpawn()
         {
-            networkSo.player1Info.ResetValues();
-            networkSo.player2Info.ResetValues();
+            PlayersManager.Instance.player1Info.ResetValues();
+            PlayersManager.Instance.player2Info.ResetValues();
             playerNumberCounter += 1;
             playerNumberId = playerNumberCounter;
         }
@@ -31,11 +30,11 @@ namespace Player
         {
             if (isPlayer1)
             {
-                networkSo.player1Info.TakeDamage(damage);
+                PlayersManager.Instance.player1Info.TakeDamage(damage);
             }
             else
             {
-                networkSo.player2Info.TakeDamage(damage);
+                PlayersManager.Instance.player2Info.TakeDamage(damage);
             }
         }
     }

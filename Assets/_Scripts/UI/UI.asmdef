@@ -2,12 +2,12 @@
     "name": "UI",
     "rootNamespace": "",
     "references": [
-        "GUID:9e45b44602e8b43439f259b41b2ff031",
-        "GUID:ed4a1e79204044840893ff4fdaaa6737",
-        "GUID:eb46078f5da49584bb202a6b685f0635",
-        "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:5b24475e1c22f2c45b12bcf09bdb63a5"
+        "GUID:9e45b44602e8b43439f259b41b2ff031",
+        "GUID:fc95ac722255a1544851832d10bf2ae8",
+        "GUID:5b24475e1c22f2c45b12bcf09bdb63a5",
+        "GUID:ed4a1e79204044840893ff4fdaaa6737",
+        "GUID:1491147abca9d7d4bb7105af628b223e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

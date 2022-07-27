@@ -14,7 +14,6 @@ namespace Bullet
         [SerializeField] private BulletSO bulletSo;
         [SerializeField] private BulletAnimation bulletAnimation;
         [SerializeField] private BulletMovement bulletMovement;
-        [SerializeField] private NetworkSO networkSo;
 
         private NetworkObject _networkObject;
         private Coroutine _rangeCoroutine;

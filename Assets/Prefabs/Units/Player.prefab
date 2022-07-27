@@ -155,7 +155,6 @@ MonoBehaviour:
   weaponSo: {fileID: 11400000, guid: b15216b468d195e4c99d62640255445d, type: 2}
   canon: {fileID: 5809076041192971576}
   enemyWeapon: {fileID: 11400000, guid: b4641f625226ed540bcb561e8dc8291a, type: 2}
-  gamePhaseSo: {fileID: 11400000, guid: d13525b0e29829144b40ef62f2536413, type: 2}
   fireRateInSeconds: 0.2
 --- !u!64 &5829974573209080089
 MeshCollider:
@@ -211,13 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ad23d25b4b4885b68d55f81569368c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamePhaseSo: {fileID: 11400000, guid: d13525b0e29829144b40ef62f2536413, type: 2}
-  transitionPositionPlayer1: {x: 0, y: -10, z: 0}
-  transitionPositionPlayer2: {x: 0, y: 10, z: 0}
-  initialPositionPlayer1: {x: 0, y: -3, z: 0}
-  initialPositionPlayer2: {x: 0, y: 3, z: 0}
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
-  speedTransition: 0.033
+  transitionPositionPlayer1: {x: 0, y: 0, z: 0}
+  transitionPositionPlayer2: {x: 0, y: 0, z: 0}
+  initialPositionPlayer1: {x: 0, y: 0, z: 0}
+  initialPositionPlayer2: {x: 0, y: 0, z: 0}
+  speedTransition: 0.1
 --- !u!114 &-5490770432186777339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c4d2ead3d448f29c52bd86f1a6d4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!114 &1558426030514668573
 MonoBehaviour:
   m_ObjectHideFlags: 0

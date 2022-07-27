@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
+using _Scripts.Managers;
 using SO;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Enemies
 {
     public class EnemyManager : NetworkBehaviour
     {
-        [SerializeField] private GameSettingsSO gameSettingsSo;
-        [SerializeField] private NetworkSO networkSo;
-
         private NetworkObject _networkObject;
 
         public void Initialize(float posX, bool isPlayer1)
@@ -19,12 +14,12 @@ namespace Enemies
             if (isPlayer1)
             {
                 transform.localRotation = Quaternion.Euler(90.0f,180.0f,0.0f);
-                transform.position = new Vector3(posX, -gameSettingsSo.screenHeight*0.5f, 0.0f);
+                transform.position = new Vector3(posX, -GameManager.Instance.gameSettings.screenHeight*0.5f, 0.0f);
             }
             else
             {
                 transform.localRotation = Quaternion.Euler(-90.0f,0.0f,0.0f);
-                transform.position = new Vector3(posX, gameSettingsSo.screenHeight*0.5f, 0.0f);
+                transform.position = new Vector3(posX, GameManager.Instance.gameSettings.screenHeight*0.5f, 0.0f);
             }
         }
         private void Awake()
@@ -43,7 +38,7 @@ namespace Enemies
         private void Update()
         {
             if (!IsServer) return;
-            if (Mathf.Abs(transform.position.y) > gameSettingsSo.screenHeight)
+            if (Mathf.Abs(transform.position.y) > GameManager.Instance.gameSettings.screenHeight)
             {
                 //transform.position = new Vector3(0.0f, gameSettingsSo.screenHeight * 0.5f, 0.0f);
                 ReturnToBulletPool();
@@ -69,11 +64,11 @@ namespace Enemies
         {
             if (isPlayer1)
             {
-                networkSo.player1Info.score += value;
+                PlayersManager.Instance.player1Info.score += value;
             }
             else
             {
-                networkSo.player2Info.score += value;
+                PlayersManager.Instance.player2Info.score += value;
             }
         }
         private void ReturnToBulletPool()
