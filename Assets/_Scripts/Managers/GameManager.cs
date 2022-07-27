@@ -14,6 +14,7 @@ namespace _Scripts.Managers
         [SerializeField] private Canvas loginMenuCanvas;
         [SerializeField] private Canvas playerCanvas;
         [SerializeField] private Canvas spawningCanvas;
+        [SerializeField] private Canvas phaseTestingCanvas;
         
         void Start() => ChangeState(GameState.MainMenu);
 
@@ -56,12 +57,14 @@ namespace _Scripts.Managers
             loginMenuCanvas.enabled = true;
             playerCanvas.enabled = false;
             spawningCanvas.enabled = false;
+            phaseTestingCanvas.enabled = false;
         }
 
         private void HandleLobby() 
         {
             loginMenuCanvas.enabled = false;
             playerCanvas.enabled = true;
+            phaseTestingCanvas.enabled = true;
             spawningCanvas.enabled = false;
             ChangeState(PlayersManager.Instance.isPlayer1 ? GameState.Shooting : GameState.Spawning);
         }

@@ -210,10 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ad23d25b4b4885b68d55f81569368c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionPositionPlayer1: {x: 0, y: 0, z: 0}
-  transitionPositionPlayer2: {x: 0, y: 0, z: 0}
-  initialPositionPlayer1: {x: 0, y: 0, z: 0}
-  initialPositionPlayer2: {x: 0, y: 0, z: 0}
+  transitionPositionPlayer1: {x: 0, y: -10, z: 0}
+  transitionPositionPlayer2: {x: 0, y: 10, z: 0}
+  initialPositionPlayer1: {x: 0, y: -3, z: 0}
+  initialPositionPlayer2: {x: 0, y: 3, z: 0}
   speedTransition: 0.1
 --- !u!114 &-5490770432186777339
 MonoBehaviour:

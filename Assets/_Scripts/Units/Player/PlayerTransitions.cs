@@ -18,13 +18,11 @@ namespace _Scripts.Units.Player
         //member variables
         private bool _inTransition = false;
         
-        //reference to components
-        private PlayerInput _playerInput;
+       
 
         private void Awake()
         {
             GameManager.OnAfterStateChanged += StartTransition;
-            _playerInput = GetComponent<PlayerInput>();
         }
 
         private void Update()
@@ -47,11 +45,11 @@ namespace _Scripts.Units.Player
         {
             if (PlayersManager.Instance.isPlayer1)
             {
-                LerpTo(initialPositionPlayer1, 0.1f, true);
+                LerpTo(initialPositionPlayer1, 0.1f);
             }
             else
             {
-                LerpTo(initialPositionPlayer2, 0.1f, true);
+                LerpTo(initialPositionPlayer2, 0.1f);
             }
         }
 
@@ -59,20 +57,19 @@ namespace _Scripts.Units.Player
         {
             if (PlayersManager.Instance.isPlayer1)
             {
-                LerpTo(transitionPositionPlayer1, 0.1f, false);
+                LerpTo(transitionPositionPlayer1, 0.1f);
             }
             else
             {
-                LerpTo(transitionPositionPlayer2, 0.1f, false);
+                LerpTo(transitionPositionPlayer2, 0.1f);
             }
         }
 
-        private void LerpTo(Vector3 position, float distance, bool playerInput)
+        private void LerpTo(Vector3 position, float distance)
         {
             if (Vector3.Distance(transform.position, position) < distance)
             {
                 _inTransition = false;
-                _playerInput.enabled = playerInput;
             }
             
             transform.position = Vector3.Lerp(transform.position, position, speedTransition);

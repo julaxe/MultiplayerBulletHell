@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using _Scripts.Managers;
 using Bullet;
 using SO;
@@ -15,6 +17,18 @@ namespace _Scripts.Units.Player
         [SerializeField] private float fireRateInSeconds;
 
         private float _timer;
+        private bool _isShooting;
+
+        private void Awake()
+        {
+            GameManager.OnAfterStateChanged += OnChangeState;
+        }
+
+        public override void OnDestroy()
+        {
+            GameManager.OnAfterStateChanged -= OnChangeState;
+        }
+
         public override void OnNetworkSpawn()
         {
             if (!IsOwner)
@@ -36,7 +50,7 @@ namespace _Scripts.Units.Player
         private void FixedUpdate()
         {
             if (!IsOwner) return;
-            if (GameManager.Instance.State != GameState.Shooting) return;
+            if (!_isShooting) return;
             
             if (_timer >= fireRateInSeconds)
             {
@@ -45,6 +59,19 @@ namespace _Scripts.Units.Player
             }
             _timer += Time.fixedDeltaTime;
         }
+
+        private async void OnChangeState(GameState state)
+        {
+            if (state == GameState.Shooting)
+            {
+                await Task.Delay(1000);
+                _isShooting = true;
+                return;
+            }
+
+            _isShooting = false;
+        }
+        
         
 
         [ServerRpc]
