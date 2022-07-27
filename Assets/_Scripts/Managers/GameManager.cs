@@ -4,10 +4,6 @@ using UnityEngine;
 
 namespace _Scripts.Managers
 {
-    /// <summary>
-    /// Nice, easy to understand enum-based game manager. For larger and more complex games, look into
-    /// state machines. But this will serve just fine for most games.
-    /// </summary>
     public class GameManager : StaticInstance<GameManager> {
         public static event Action<GameState> OnBeforeStateChanged;
         public static event Action<GameState> OnAfterStateChanged;
@@ -15,21 +11,30 @@ namespace _Scripts.Managers
         public GameState State { get; private set; }
 
         public GameSettingsSO gameSettings;
-        // Kick the game off with the first state
+        [SerializeField] private Canvas loginMenuCanvas;
+        [SerializeField] private Canvas playerCanvas;
+        [SerializeField] private Canvas spawningCanvas;
+        
         void Start() => ChangeState(GameState.MainMenu);
 
-        public void ChangeState(GameState newState) {
+        public void ChangeState(GameState newState) 
+        {
             OnBeforeStateChanged?.Invoke(newState);
 
             State = newState;
-            switch (newState) {
+            switch (newState) 
+            {
                 case GameState.MainMenu:
+                    HandleMainMenu();
                     break;
                 case GameState.Lobby:
+                    HandleLobby();
                     break;
                 case GameState.Shooting:
+                    HandleShooting();
                     break;
                 case GameState.Spawning:
+                    HandleSpawning();
                     break;
                 case GameState.Win:
                     break;
@@ -44,18 +49,31 @@ namespace _Scripts.Managers
             Debug.Log($"New state: {newState}");
         }
 
-        private void HandleStarting() {
+        private void HandleMainMenu() 
+        {
             // Do some start setup, could be environment, cinematics etc
 
-            // Eventually call ChangeState again with your next state
-        
+            loginMenuCanvas.enabled = true;
+            playerCanvas.enabled = false;
+            spawningCanvas.enabled = false;
         }
 
-        private void HandleHeroTurn() {
-            // If you're making a turn based game, this could show the turn menu, highlight available units etc
-        
-            // Keep track of how many units need to make a move, once they've all finished, change the state. This could
-            // be monitored in the unit manager or the units themselves.
+        private void HandleLobby() 
+        {
+            loginMenuCanvas.enabled = false;
+            playerCanvas.enabled = true;
+            spawningCanvas.enabled = false;
+            ChangeState(PlayersManager.Instance.isPlayer1 ? GameState.Shooting : GameState.Spawning);
+        }
+
+        private void HandleShooting()
+        {
+            spawningCanvas.enabled = false;
+        }
+
+        private void HandleSpawning()
+        {
+            spawningCanvas.enabled = true;
         }
     }
 

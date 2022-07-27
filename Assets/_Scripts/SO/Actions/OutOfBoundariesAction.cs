@@ -1,4 +1,4 @@
-using Enemies;
+using _Scripts.Units.Enemies;
 using UnityEngine;
 
 namespace SO.Actions

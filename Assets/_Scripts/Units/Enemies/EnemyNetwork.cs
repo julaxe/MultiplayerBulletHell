@@ -1,9 +1,8 @@
 using SO;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Enemies
+namespace _Scripts.Units.Enemies
 {
     public class EnemyNetwork : NetworkBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemies
+namespace _Scripts.Units.Enemies
 {
     public abstract class Action : ScriptableObject
     {
