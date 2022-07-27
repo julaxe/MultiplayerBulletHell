@@ -1,9 +1,45 @@
-<mxfile host="app.diagrams.net" modified="2022-07-19T21:22:27.877Z" agent="5.0 (Windows)" etag="OYEhMuEjvTo6BB0qXZeU" version="20.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-23T23:00:52.682Z" agent="5.0 (Windows)" etag="LHTgsBhzikOmD02L9WbO" version="20.1.1" type="github">
   <diagram id="yWQKVTWnlPdVZ_UfO4Iy" name="Page-1">
     <mxGraphModel dx="868" dy="480" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="xKq7c8mvunEufMje4os0-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xKq7c8mvunEufMje4os0-1" target="xKq7c8mvunEufMje4os0-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-1" value="Spawn" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-2" value="&lt;div&gt;Defined Route&lt;/div&gt;&amp;nbsp;for x Seconds" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="35" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xKq7c8mvunEufMje4os0-3" target="xKq7c8mvunEufMje4os0-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-3" value="player Click on it" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="170" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-4" value="Lean Angle" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="545" y="40" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-5" value="Every frame lean toward vel.x" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xKq7c8mvunEufMje4os0-7" target="xKq7c8mvunEufMje4os0-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xKq7c8mvunEufMje4os0-7" target="xKq7c8mvunEufMje4os0-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-7" value="&lt;div&gt;While is pressed and X seconds haven&#39;t passed yet&lt;br&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="300" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-9" value="Create the path and draw (where the click is)" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xKq7c8mvunEufMje4os0-11" value="Follow the path and keep last direction for the rest of his trayectory" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
