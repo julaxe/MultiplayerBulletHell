@@ -134,10 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bd9e38204a45789ad5815669736c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 877e09c8425252c4c91f1b71f86a8059, type: 2}
-  timer: 0
+  currentState: {fileID: 11400000, guid: 77d51a29573bd724ba45fefe08ebf5f4, type: 2}
   weapon: {fileID: 5815601112850478215}
-  enemyNetwork: {fileID: 1768766355778617841}
+  clickRadius: 1
+  remainInState: {fileID: 11400000, guid: 6001d15276149b5499772fe4ef309f35, type: 2}
+  timer: 0
 --- !u!114 &5815601112850478215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,9 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd85f43eb4484ce091f6afbd081d3618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPoolSo: {fileID: 11400000, guid: 6c9688530888d6e4685ae0ae3f8bef10, type: 2}
-  gameSettingsSo: {fileID: 11400000, guid: 46d143aa38b00ce43890da57bc9ef698, type: 2}
-  networkSo: {fileID: 11400000, guid: 0512f2c4a6e11ae4799fa0648956ca40, type: 2}
 --- !u!114 &-4376004572835395669
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,12 +14,12 @@ namespace Enemies
             if (isPlayer1)
             {
                 transform.localRotation = Quaternion.Euler(90.0f,180.0f,0.0f);
-                transform.position = new Vector3(posX, -GameManager.Instance.gameSettings.screenHeight*0.5f, 0.0f);
+                transform.position = new Vector3(posX, -GameManager.Instance.gameSettings.screenHeight*0.45f, 0.0f);
             }
             else
             {
                 transform.localRotation = Quaternion.Euler(-90.0f,0.0f,0.0f);
-                transform.position = new Vector3(posX, GameManager.Instance.gameSettings.screenHeight*0.5f, 0.0f);
+                transform.position = new Vector3(posX, GameManager.Instance.gameSettings.screenHeight*0.45f, 0.0f);
             }
         }
         private void Awake()

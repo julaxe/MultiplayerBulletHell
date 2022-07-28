@@ -212,7 +212,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Spawn
+  m_text: 'E 1
 
 '
   m_isRightToLeft: 0
@@ -1568,7 +1568,7 @@ GameObject:
   - component: {fileID: 3960920760055828286}
   - component: {fileID: 8183536646586741595}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Enemy1Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2833,7 +2833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 71.8999}
+  m_AnchoredPosition: {x: 0, y: 497}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1619827064
@@ -3640,7 +3640,7 @@ GameObject:
   - component: {fileID: 4311846376414109396}
   - component: {fileID: 8988910141074006705}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Enemy2Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3695,9 +3695,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Spawn
-
-'
+  m_text: E 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4161,6 +4159,18 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3096347084
       objectReference: {fileID: 0}
+    - target: {fileID: 8275583432598589086, guid: 7814424c0df2fca428f5d09133f0371f, type: 3}
+      propertyPath: PooledPrefabsList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275583432598589086, guid: 7814424c0df2fca428f5d09133f0371f, type: 3}
+      propertyPath: PooledPrefabsList.Array.data[3].Prefab
+      value: 
+      objectReference: {fileID: 7805056323437912549, guid: d9501169c7e590241b816f4dc7571336, type: 3}
+    - target: {fileID: 8275583432598589086, guid: 7814424c0df2fca428f5d09133f0371f, type: 3}
+      propertyPath: PooledPrefabsList.Array.data[3].PrewarmCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8275583432598589087, guid: 7814424c0df2fca428f5d09133f0371f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4224,7 +4234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0adf07212615104aa62424963ffc366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
+  enemySo: {fileID: 0}
 --- !u!114 &8988910141074006705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4237,4 +4247,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0adf07212615104aa62424963ffc366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
+  enemySo: {fileID: 11400000, guid: fc54bd33bae875344b6c52326ab60698, type: 2}

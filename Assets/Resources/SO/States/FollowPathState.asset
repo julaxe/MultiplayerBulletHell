@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51a4f5eb91464a2da4589cbb6f2cae42, type: 3}
-  m_Name: WaitAndShootState
+  m_Name: FollowPathState
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: bf3234836495fb14cb59992dfc922fd5, type: 2}
+  actions: []
+  transitions: []
+  colorGizmos: {r: 0, g: 0, b: 0, a: 0}

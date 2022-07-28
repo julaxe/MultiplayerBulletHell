@@ -6,5 +6,6 @@ namespace SO
     public class EnemySO : ScriptableObject
     {
         public GameObject enemyPrefab;
+        public Sprite image;
     }
 }

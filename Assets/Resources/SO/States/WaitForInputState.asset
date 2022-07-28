@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51a4f5eb91464a2da4589cbb6f2cae42, type: 3}
-  m_Name: CustomRouteState
+  m_Name: WaitForInputState
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 682dd3c727764b14bbdb78131822d649, type: 2}
+  actions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 11f5bdac2dc401f46a3761a366dc9fe6, type: 2}
+    trueState: {fileID: 11400000, guid: 2cebfc817c928a940ad610dc0c8d0d72, type: 2}
+    falseState: {fileID: 11400000, guid: 6001d15276149b5499772fe4ef309f35, type: 2}
+  colorGizmos: {r: 0.20440245, g: 1, b: 0.2997443, a: 1}

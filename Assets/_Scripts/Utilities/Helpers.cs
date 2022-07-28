@@ -15,4 +15,9 @@ public static class Helpers
     public static void DestroyChildren(this Transform t) {
         foreach (Transform child in t) Object.Destroy(child.gameObject);
     }
+
+    public static bool IsPointInsideCircle(Vector2 point, Vector2 circleCenter, float radius)
+    {
+        return Mathf.Abs(Vector2.Distance(point, circleCenter)) <= radius;
+    }
 }
