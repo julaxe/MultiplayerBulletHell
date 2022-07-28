@@ -1,11 +1,12 @@
 using System;
 using _Scripts.Managers;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _Scripts.Units.Player
 {
-    public class PlayerTransitions : MonoBehaviour
+    public class PlayerTransitions : NetworkBehaviour
     {
         [SerializeField] private Vector3 transitionPositionPlayer1;
         [SerializeField] private Vector3 transitionPositionPlayer2;
@@ -17,8 +18,13 @@ namespace _Scripts.Units.Player
         [Range(0.0f, 1.0f)] [SerializeField] private float speedTransition = 0.1f;
         //member variables
         private bool _inTransition = false;
-        
-       
+
+
+        public override void OnNetworkSpawn()
+        {
+            if (IsOwner) return;
+            enabled = false;
+        }
 
         private void Start()
         {

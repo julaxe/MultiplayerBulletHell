@@ -4,16 +4,24 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace _Scripts.Units.Player
 {
     public class PlayerMovementOnScreen : NetworkBehaviour
     {
+        private bool _isMoving;
+        private PlayerInput _playerInput;
+        [SerializeField] private bool _isOwner;
+
         public override void OnNetworkSpawn()
         {
-            enabled = IsOwner;
+            _isOwner = IsOwner;
+            _playerInput = GetComponent<PlayerInput>();
+            if (IsOwner) return;
+            _playerInput.enabled = false;
+            enabled = false;
         }
+        
 
-        private bool _isMoving;
         private void FixedUpdate()
         {
             if (GameManager.Instance.State != GameState.Shooting) return;
@@ -24,6 +32,7 @@ namespace Player
 
         public void OnLeftClick(InputValue value)
         {
+            if (GameManager.Instance.State != GameState.Shooting) return;
             _isMoving = value.isPressed;
         }
     }
