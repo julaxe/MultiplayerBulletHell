@@ -136,7 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 77d51a29573bd724ba45fefe08ebf5f4, type: 2}
   weapon: {fileID: 5815601112850478215}
-  clickRadius: 1
+  clickRadius: 0.25
+  arrowLine: {fileID: 0}
   remainInState: {fileID: 11400000, guid: 6001d15276149b5499772fe4ef309f35, type: 2}
   timer: 0
 --- !u!114 &5815601112850478215

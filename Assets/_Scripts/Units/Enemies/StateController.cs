@@ -7,12 +7,22 @@ namespace _Scripts.Units.Enemies
 {
     public class StateController : NetworkBehaviour
     {
-        public State currentState;
+        //enemy
         public WeaponBehaviour weapon;
-        [HideInInspector] public float radius = 0.005f;
-
+        
+        //interactable
+        public float clickRadius = 0.1f;
+        
+        //arrowLine
+        [NonSerialized] public Line arrowLine;
+        [NonSerialized] public Vector3[] arrowLinePositions;
+        [NonSerialized] public int currentArrowLinePosition = 0;
+        
+        //state
+        public State currentState;
         public State remainInState;
         
+        //helpers
         [HideInInspector] public float timer = 0.0f;
         private void OnValidate()
         {
@@ -36,7 +46,7 @@ namespace _Scripts.Units.Enemies
         private void OnDrawGizmos()
         {
             Gizmos.color = currentState.colorGizmos;
-            Gizmos.DrawWireSphere(transform.position, radius);
+            Gizmos.DrawWireSphere(transform.position, clickRadius);
         }
     }
 }

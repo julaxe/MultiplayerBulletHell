@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a4f5eb91464a2da4589cbb6f2cae42, type: 3}
-  m_Name: FollowPathState
+  m_Script: {fileID: 11500000, guid: 590044f6d8504a55a0b9e863d8ffc7af, type: 3}
+  m_Name: Input Is False Decision
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 04a3baa283b7c6b4d88ffdb3effad575, type: 2}
-  transitions: []
-  colorGizmos: {r: 1, g: 0, b: 0.9659414, a: 1}

@@ -18,6 +18,8 @@ public static class Helpers
 
     public static bool IsPointInsideCircle(Vector2 point, Vector2 circleCenter, float radius)
     {
-        return Mathf.Abs(Vector2.Distance(point, circleCenter)) <= radius;
+        //for debugging purposes we are gonna separate this.
+        var distance = Mathf.Abs(Vector2.Distance(point, circleCenter));
+        return distance <= radius;
     }
 }

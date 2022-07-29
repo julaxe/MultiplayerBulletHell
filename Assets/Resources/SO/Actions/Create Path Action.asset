@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a4f5eb91464a2da4589cbb6f2cae42, type: 3}
-  m_Name: FollowPathState
+  m_Script: {fileID: 11500000, guid: d38070cc94c74b188b881aa6398b9aa7, type: 3}
+  m_Name: Create Path Action
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 04a3baa283b7c6b4d88ffdb3effad575, type: 2}
-  transitions: []
-  colorGizmos: {r: 1, g: 0, b: 0.9659414, a: 1}

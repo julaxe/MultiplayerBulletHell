@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a4f5eb91464a2da4589cbb6f2cae42, type: 3}
   m_Name: DrawArrowState
   m_EditorClassIdentifier: 
-  actions: []
-  transitions: []
+  actions:
+  - {fileID: 11400000, guid: c55d8536ba0646345bd52efd2ff8c88e, type: 2}
+  - {fileID: 11400000, guid: 0e66643cb73bbf84d815da241cc00a5f, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: bb47f67266e40814b932a961413f7269, type: 2}
+    trueState: {fileID: 11400000, guid: bd9edb08fe63b4e49bb06c3444bdac75, type: 2}
+    falseState: {fileID: 11400000, guid: 6001d15276149b5499772fe4ef309f35, type: 2}
   colorGizmos: {r: 1, g: 0, b: 0, a: 1}
