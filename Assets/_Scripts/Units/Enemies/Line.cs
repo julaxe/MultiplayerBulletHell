@@ -13,9 +13,25 @@ public class Line : MonoBehaviour
     
     public void UpdateLine(Vector2 newPos)
     {
+        UpdateArrow(newPos);
         if (!CanAddNewPosition(newPos)) return;
         _lineRenderer.positionCount++;
         _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, newPos);
+    }
+
+    private void UpdateArrow(Vector2 newPos)
+    {
+        arrowHead.transform.position = newPos;
+        
+        //direction
+        if (_lineRenderer.positionCount <=  1) return;
+        
+        var direction = (arrowHead.transform.position - _lineRenderer.GetPosition(_lineRenderer.positionCount - 2))
+            .normalized;
+        
+        if (direction.Equals(Vector3.zero)) return;
+        
+        arrowHead.transform.right = direction;
     }
 
     private bool CanAddNewPosition(Vector2 newPos)

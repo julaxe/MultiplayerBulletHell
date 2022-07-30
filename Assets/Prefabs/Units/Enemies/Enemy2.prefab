@@ -134,10 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bd9e38204a45789ad5815669736c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 77d51a29573bd724ba45fefe08ebf5f4, type: 2}
   weapon: {fileID: 5815601112850478215}
   clickRadius: 0.25
-  arrowLine: {fileID: 0}
+  initialState: {fileID: 11400000, guid: 77d51a29573bd724ba45fefe08ebf5f4, type: 2}
+  currentState: {fileID: 11400000, guid: 77d51a29573bd724ba45fefe08ebf5f4, type: 2}
   remainInState: {fileID: 11400000, guid: 6001d15276149b5499772fe4ef309f35, type: 2}
   timer: 0
 --- !u!114 &5815601112850478215

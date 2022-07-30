@@ -11,11 +11,11 @@ namespace _Scripts.Managers
         public GameState State { get; private set; }
 
         public GameSettingsSO gameSettings;
-        [SerializeField] private Canvas loginMenuCanvas;
-        [SerializeField] private Canvas lobbyCanvas;
-        [SerializeField] private Canvas playerCanvas;
-        [SerializeField] private Canvas spawningCanvas;
-        [SerializeField] private Canvas phaseTestingCanvas;
+        public Canvas loginMenuCanvas;
+        public Canvas lobbyCanvas;
+        public Canvas playerCanvas;
+        public Canvas spawningCanvas;
+        public Canvas phaseTestingCanvas;
         
         void Start() => ChangeState(GameState.MainMenu);
 

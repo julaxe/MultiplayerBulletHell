@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: 04a3baa283b7c6b4d88ffdb3effad575, type: 2}
+  - {fileID: 11400000, guid: 7cd4350766ebfc14e9fd2e3f0a42ee74, type: 2}
   transitions: []
   colorGizmos: {r: 1, g: 0, b: 0.9659414, a: 1}

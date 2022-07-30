@@ -1,8 +1,7 @@
 using _Scripts.Units.Enemies;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace _Scripts.SO.Actions
+namespace _Scripts.SO.PluggableAISO
 {
     [CreateAssetMenu(menuName = "PluggableAI/Actions/CreatePath")]
     public class CreatePathAction : Action
@@ -15,6 +14,7 @@ namespace _Scripts.SO.Actions
         public override void OnExit(StateController controller)
         {
             controller.arrowLinePositions = controller.arrowLine.GetPositions();
+            Destroy(controller.arrowLine.gameObject);
         }
     }
 }

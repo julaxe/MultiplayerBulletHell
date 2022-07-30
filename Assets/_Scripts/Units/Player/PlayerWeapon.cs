@@ -50,6 +50,7 @@ namespace _Scripts.Units.Player
         private void FixedUpdate()
         {
             if (!IsOwner) return;
+            if (GameManager.Instance.State == GameState.Spawning) return;
             if (!_isShooting) return;
             
             if (_timer >= fireRateInSeconds)

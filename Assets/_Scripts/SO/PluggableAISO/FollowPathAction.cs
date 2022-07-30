@@ -7,10 +7,12 @@ namespace _Scripts.SO.Actions
     [CreateAssetMenu(menuName = "PluggableAI/Actions/FollowPath")]
     public class FollowPathAction : Action
     {
-        public float resolution = 0.05f;
+        public float resolution = 0.1f;
+        public float speed = 1.0f;
         public override void OnEnter(StateController controller)
         {
             controller.currentArrowLinePosition = 0;
+            controller.direction = Vector3.zero;
         }
 
         public override void Act(StateController controller)
@@ -20,6 +22,7 @@ namespace _Scripts.SO.Actions
 
         private void FollowPath(StateController controller)
         {
+            UpdatePosition(controller);
             if (controller.currentArrowLinePosition >= controller.arrowLinePositions.Length) return;
             
             GoToNextPoint(controller);
@@ -34,8 +37,17 @@ namespace _Scripts.SO.Actions
 
         private void GoToNextPoint(StateController controller)
         {
-            var newPos = Vector3.Lerp(controller.transform.position,
-                controller.arrowLinePositions[controller.currentArrowLinePosition], resolution);
+            controller.direction = (controller.arrowLinePositions[controller.currentArrowLinePosition] -
+                             controller.transform.position).normalized;
+        }
+
+        private void UpdatePosition(StateController controller)
+        {
+            var velocity =  controller.direction * speed * Time.deltaTime;
+
+            var newPos = controller.transform.position + velocity;
+            // var newPos = Vector3.Lerp(controller.transform.position,
+            //     controller.arrowLinePositions[controller.currentArrowLinePosition], resolution);
             controller.transform.position = newPos;
         }
     }

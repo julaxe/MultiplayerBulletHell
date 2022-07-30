@@ -18,7 +18,11 @@ namespace _Scripts.Units.Enemies
         [NonSerialized] public Vector3[] arrowLinePositions;
         [NonSerialized] public int currentArrowLinePosition = 0;
         
+        //movement
+        [NonSerialized] public Vector3 direction;
+        
         //state
+        public State initialState;
         public State currentState;
         public State remainInState;
         
@@ -27,6 +31,11 @@ namespace _Scripts.Units.Enemies
         private void OnValidate()
         {
             weapon = GetComponent<WeaponBehaviour>();
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            TransitionToState(initialState);
         }
 
         private void Update()
