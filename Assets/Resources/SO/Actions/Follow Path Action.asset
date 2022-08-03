@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Follow Path Action
   m_EditorClassIdentifier: 
   resolution: 0.1
-  speed: 10
+  speed: 5

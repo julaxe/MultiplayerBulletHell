@@ -35,6 +35,7 @@ namespace _Scripts.Units.Enemies
 
         public override void OnNetworkSpawn()
         {
+            enabled = IsOwner;
             TransitionToState(initialState);
         }
 

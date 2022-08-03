@@ -1348,6 +1348,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1851309464508127280, guid: 45118c63721f47e43849c2136841ac17, type: 3}
+      propertyPath: NetworkConfig.ConnectionApproval
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851309464508127280, guid: 45118c63721f47e43849c2136841ac17, type: 3}
+      propertyPath: NetworkConfig.EnableSceneManagement
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1851309464508127282, guid: 45118c63721f47e43849c2136841ac17, type: 3}
       propertyPath: m_Name
       value: NetworkManager
