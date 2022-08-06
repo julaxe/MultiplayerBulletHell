@@ -1,4 +1,3 @@
-using Unity.Netcode;
 using UnityEngine;
 
 namespace _Scripts.Utilities
@@ -8,7 +7,7 @@ namespace _Scripts.Utilities
     /// instances, it overrides the current instance. This is handy for resetting the state
     /// and saves you doing it manually
     /// </summary>
-    public abstract class StaticInstance<T> : NetworkBehaviour where T : NetworkBehaviour {
+    public abstract class StaticInstance<T> : MonoBehaviour where T : MonoBehaviour {
         public static T Instance { get; private set; }
         protected virtual void Awake() => Instance = this as T;
 
@@ -22,7 +21,7 @@ namespace _Scripts.Utilities
     /// This transforms the static instance into a basic singleton. This will destroy any new
     /// versions created, leaving the original instance intact
     /// </summary>
-    public abstract class Singleton<T> : StaticInstance<T> where T : NetworkBehaviour {
+    public abstract class Singleton<T> : StaticInstance<T> where T : MonoBehaviour {
         protected override void Awake() {
             if (Instance != null)
             {
@@ -38,10 +37,9 @@ namespace _Scripts.Utilities
     /// loads. Perfect for system classes which require stateful, persistent data. Or audio sources
     /// where music plays through loading screens, etc
     /// </summary>
-    public abstract class PersistentSingleton<T> : Singleton<T> where T : NetworkBehaviour {
+    public abstract class PersistentSingleton<T> : Singleton<T> where T : MonoBehaviour {
         protected override void Awake() {
             base.Awake();
-            DontDestroyOnLoad(gameObject);
         }
     }
 }

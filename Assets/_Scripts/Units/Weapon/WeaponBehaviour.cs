@@ -1,9 +1,10 @@
-using Bullet;
+using _Scripts.Units.Bullet;
+using _Scripts.Utilities;
+using FishNet.Object;
 using SO;
-using Unity.Netcode;
 using UnityEngine;
 
-namespace Weapon
+namespace _Scripts.Units.Weapon
 {
     public class WeaponBehaviour : NetworkBehaviour
     {
@@ -21,7 +22,7 @@ namespace Weapon
             var bullet = NetworkObjectPool.Instance.GetNetworkObject(weaponSo.bulletSo.bulletPrefab,
                 canon.position, canon.rotation);
             bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
-            bullet.Spawn();
+            //bullet.Spawn();
         }
     }
 }

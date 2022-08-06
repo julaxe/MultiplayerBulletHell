@@ -1,4 +1,4 @@
-using Unity.Netcode;
+using FishNet.Object;
 using UnityEngine;
 
 namespace _Scripts.Managers
@@ -12,10 +12,10 @@ namespace _Scripts.Managers
             _networkObject = GetComponent<NetworkObject>();
         }
 
-        public override void OnNetworkSpawn()
-        {
-            enabled = IsOwner;
-        }
+        // public override void OnNetworkSpawn()
+        // {
+        //     enabled = IsOwner;
+        // }
 
         private void Update()
         {
@@ -44,20 +44,20 @@ namespace _Scripts.Managers
         [ServerRpc]
         private void Score_ServerRpc(int value, bool isPlayer)
         {
-            Score_ClientRpc(value, isPlayer);
+            //Score_ClientRpc(value, isPlayer);
         }
-        [ClientRpc]
-        private void Score_ClientRpc(int value, bool isPlayer1)
-        {
-            if (isPlayer1)
-            {
-                PlayersManager.Instance.player1Info.score += value;
-            }
-            else
-            {
-                PlayersManager.Instance.player2Info.score += value;
-            }
-        }
+        // [ClientRpc]
+        // private void Score_ClientRpc(int value, bool isPlayer1)
+        // {
+        //     if (isPlayer1)
+        //     {
+        //         PlayersManager.Instance.player1Info.score += value;
+        //     }
+        //     else
+        //     {
+        //         PlayersManager.Instance.player2Info.score += value;
+        //     }
+        // }
         
         private void ReturnToBulletPool()
         {

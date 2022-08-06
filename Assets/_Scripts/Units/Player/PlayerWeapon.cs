@@ -1,9 +1,9 @@
-using System;
 using System.Threading.Tasks;
 using _Scripts.Managers;
-using Bullet;
+using _Scripts.Units.Bullet;
+using _Scripts.Utilities;
+using FishNet.Object;
 using SO;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace _Scripts.Units.Player
@@ -24,12 +24,12 @@ namespace _Scripts.Units.Player
             GameManager.OnBeforeStateChanged += OnChangeState;
         }
 
-        public override void OnDestroy()
+        public void OnDestroy()
         {
             GameManager.OnAfterStateChanged -= OnChangeState;
         }
 
-        public override void OnNetworkSpawn()
+        public void OnNetworkSpawn()
         {
             if (!IsOwner)
             {
@@ -81,7 +81,7 @@ namespace _Scripts.Units.Player
             var bullet = NetworkObjectPool.Instance.GetNetworkObject(weaponSo.bulletSo.bulletPrefab,
                 canon.position, canon.rotation);
             bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
-            bullet.Spawn();
+            //bullet.Spawn();
         }
         
     }

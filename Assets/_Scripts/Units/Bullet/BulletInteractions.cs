@@ -1,12 +1,11 @@
-using System;
 using System.Collections;
+using Bullet;
 using DefaultNamespace;
+using FishNet.Object;
 using SO;
-using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Bullet
+namespace _Scripts.Units.Bullet
 {
     public class BulletInteractions : NetworkBehaviour
     {
@@ -23,20 +22,21 @@ namespace Bullet
             _networkObject = GetComponent<NetworkObject>();
         }
 
-        public override void OnNetworkSpawn()
+        public void OnNetworkSpawn()
         {
             bulletAnimation.StartVFX();
             bulletAnimation.ShowMuzzle();
             StartCoroutine(RangeCoroutine(bulletSo.rangeInSeconds));
         }
 
-        public override void OnNetworkDespawn()
+        public  void OnNetworkDespawn()
         {
             bulletAnimation.ShowHit();
         }
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
             bulletAnimation = GetComponent<BulletAnimation>();
             bulletMovement = GetComponent<BulletMovement>();
         }

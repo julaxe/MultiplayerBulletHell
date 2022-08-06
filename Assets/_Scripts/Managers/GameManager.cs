@@ -8,10 +8,13 @@ namespace _Scripts.Managers
     public class GameManager : StaticInstance<GameManager> {
         public static event Action<GameState> OnBeforeStateChanged;
         public static event Action<GameState> OnAfterStateChanged;
+        
 
         public GameState State { get; private set; }
 
         public GameSettingsSO gameSettings;
+        
+        
         public Canvas loginMenuCanvas;
         public Canvas lobbyCanvas;
         public Canvas playerCanvas;
@@ -52,6 +55,7 @@ namespace _Scripts.Managers
             Debug.Log($"New state: {newState}");
         }
 
+        
         private void HandleMainMenu() 
         {
             // Do some start setup, could be environment, cinematics etc

@@ -1,8 +1,7 @@
-using System;
 using _Scripts.Managers;
-using Unity.Netcode;
+using FishNet.Object;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 namespace _Scripts.Units.Player
 {
@@ -20,7 +19,7 @@ namespace _Scripts.Units.Player
         private bool _inTransition = false;
 
 
-        public override void OnNetworkSpawn()
+        public void OnNetworkSpawn()
         {
             if (IsOwner) return;
             enabled = false;

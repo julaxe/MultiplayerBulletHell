@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Units.Bullet;
+using FishNet.Object;
 using SO;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace Bullet
@@ -17,7 +16,7 @@ namespace Bullet
 
         private NetworkObject _networkObject;
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
             bulletInteractions = GetComponent<BulletInteractions>();
         }
@@ -49,18 +48,18 @@ namespace Bullet
         public void DisableBulletAnimation()
         {
             if (!IsServer) return;
-            StopTrails_ClientRpc();
+            //StopTrails_ClientRpc();
             StartCoroutine(bulletInteractions.DestroyInSeconds(trails[0].main.duration));
         }
 
-        [ClientRpc]
-        private void StopTrails_ClientRpc()
-        {
-            foreach (var trail in trails)
-            {
-                trail.Stop();
-            }
-        }
+        // [ClientRpc]
+        // private void StopTrails_ClientRpc()
+        // {
+        //     foreach (var trail in trails)
+        //     {
+        //         trail.Stop();
+        //     }
+        // }
         
         
     }

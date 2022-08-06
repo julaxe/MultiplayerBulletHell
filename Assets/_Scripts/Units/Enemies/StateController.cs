@@ -1,7 +1,7 @@
 using System;
-using Unity.Netcode;
+using _Scripts.Units.Weapon;
+using FishNet.Object;
 using UnityEngine;
-using Weapon;
 
 namespace _Scripts.Units.Enemies
 {
@@ -28,16 +28,17 @@ namespace _Scripts.Units.Enemies
         
         //helpers
         [HideInInspector] public float timer = 0.0f;
-        private void OnValidate()
+
+        protected override void OnValidate()
         {
             weapon = GetComponent<WeaponBehaviour>();
         }
 
-        public override void OnNetworkSpawn()
-        {
-            enabled = IsOwner;
-            TransitionToState(initialState);
-        }
+        // public override void OnNetworkSpawn()
+        // {
+        //     enabled = IsOwner;
+        //     TransitionToState(initialState);
+        // }
 
         private void Update()
         {

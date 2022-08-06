@@ -2,12 +2,12 @@
     "name": "ActionsSO",
     "rootNamespace": "",
     "references": [
-        "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:eb46078f5da49584bb202a6b685f0635",
         "GUID:3e64c685d20b71745bedbdd8b53ac93f",
         "GUID:5b24475e1c22f2c45b12bcf09bdb63a5",
-        "GUID:fc95ac722255a1544851832d10bf2ae8"
+        "GUID:fc95ac722255a1544851832d10bf2ae8",
+        "GUID:7c88a4a7926ee5145ad2dfa06f454c67"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,6 +1,5 @@
-using System;
+using FishNet.Object;
 using SO;
-using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,11 +10,11 @@ namespace _Scripts.Units.Enemies
         [SerializeField] private GameSettingsSO gameSettings;
         private bool _initialized;
 
-        public override void OnNetworkSpawn()
-        {
-            _initialized = false;
-            enabled = IsOwner;
-        }
+        // public override void OnNetworkSpawn()
+        // {
+        //     _initialized = false;
+        //     enabled = IsOwner;
+        // }
 
         private void Update()
         {
@@ -23,7 +22,7 @@ namespace _Scripts.Units.Enemies
             {
                 _initialized = true;
                 float randomX = Random.Range(-gameSettings.screenWidth*0.4f, gameSettings.screenWidth*0.4f);
-                bool isPlayer1 = NetworkManager.Singleton.LocalClient.ClientId == 0;
+                bool isPlayer1 = OwnerId == 0;
                 Initialize(randomX, isPlayer1);
             }
         }

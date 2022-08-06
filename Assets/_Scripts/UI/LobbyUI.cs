@@ -1,32 +1,52 @@
 using System;
 using _Scripts.Managers;
-using Unity.Netcode;
+using FishNet;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace _Scripts.UI
 {
-    public class LobbyUI : NetworkBehaviour
+    public class LobbyUI : MonoBehaviour
     {
-        public override void OnNetworkSpawn()
+        [SerializeField] private Button readyButton;
+        [SerializeField] private Image readyImage;
+        [SerializeField] private Button startButton;
+
+        private void OnEnable()
         {
-            gameObject.SetActive(IsHost);
+            GameManager.OnAfterStateChanged += Initialize;
+            PlayersManager.PlayerIsReadyChanged += ChangeReadyColor;
         }
 
-        public void StartPressed()
+        private void OnDisable()
         {
-            Start_ServerRpc();
+            GameManager.OnAfterStateChanged -= Initialize;
+            PlayersManager.PlayerIsReadyChanged -= ChangeReadyColor;
         }
 
-        [ServerRpc]
-        private void Start_ServerRpc()
+        private void Initialize(GameState state)
         {
-            Start_ClientRpc();
+            if (state != GameState.Lobby) return;
+            readyButton.onClick.AddListener(() =>
+            {
+                Managers.Player.Instance.ServerSetIsReady(!Managers.Player.Instance.isReady);
+            });
+            startButton.onClick.AddListener(() =>
+            {
+                Debug.Log("Start the game");
+            });
         }
 
-        [ClientRpc]
-        private void Start_ClientRpc()
+        private void ChangeReadyColor(bool value)
         {
-            GameManager.Instance.ChangeState(PlayersManager.Instance.isPlayer1? GameState.Shooting : GameState.Spawning);
+            readyImage.color = value ? Color.green : Color.red;
+        }
+
+        private void Update()
+        {
+            if (!InstanceFinder.IsHost) return;
+            startButton.interactable = PlayersManager.Instance.PlayersAreReady();
         }
     }
 }

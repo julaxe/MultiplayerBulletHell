@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8275583432598589087}
   - component: {fileID: 8275583432598589086}
-  - component: {fileID: 8275583432598589085}
   m_Layer: 0
   m_Name: NetworkObjectPool
   m_TagString: Untagged
@@ -45,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f593654c35f40734aaf1eb1395eda475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   PooledPrefabsList:
   - Prefab: {fileID: 7805056323437912549, guid: 4071c631ed7ba9746bada3c32e50ef49, type: 3}
     PrewarmCount: 10
@@ -52,19 +54,3 @@ MonoBehaviour:
     PrewarmCount: 10
   - Prefab: {fileID: 1574537439921776531, guid: d224e5b50e24019429419f4a91b0bd4c, type: 3}
     PrewarmCount: 10
---- !u!114 &8275583432598589085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8275583432598589084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1

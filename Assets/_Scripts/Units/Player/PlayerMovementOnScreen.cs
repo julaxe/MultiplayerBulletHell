@@ -1,6 +1,5 @@
-using System;
 using _Scripts.Managers;
-using Unity.Netcode;
+using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +11,7 @@ namespace _Scripts.Units.Player
         private PlayerInput _playerInput;
         [SerializeField] private bool _isOwner;
 
-        public override void OnNetworkSpawn()
+        public void OnNetworkSpawn()
         {
             _isOwner = IsOwner;
             _playerInput = GetComponent<PlayerInput>();
