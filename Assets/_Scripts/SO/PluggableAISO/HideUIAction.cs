@@ -15,7 +15,7 @@ namespace _Scripts.SO.Actions
 
         public override void OnEnter(StateController controller)
         {
-            GameManager.Instance.spawningCanvas.enabled = false;
+            UIManager.Instance.GetSpawningCanvas().enabled = false;
         }
     }
 }

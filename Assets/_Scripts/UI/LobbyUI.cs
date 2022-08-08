@@ -34,7 +34,7 @@ namespace _Scripts.UI
             });
             startButton.onClick.AddListener(() =>
             {
-                Debug.Log("Start the game");
+                Managers.Player.Instance.ChangeStateOnAllClients(GameState.Transition);
             });
         }
 

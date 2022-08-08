@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using _Scripts.Utilities;
 using SO;
 using UnityEngine;
@@ -12,16 +13,12 @@ namespace _Scripts.Managers
 
         public GameState State { get; private set; }
 
-        public GameSettingsSO gameSettings;
-        
-        
-        public Canvas loginMenuCanvas;
-        public Canvas lobbyCanvas;
-        public Canvas playerCanvas;
-        public Canvas spawningCanvas;
-        public Canvas phaseTestingCanvas;
-        
-        void Start() => ChangeState(GameState.MainMenu);
+        public GameSettingsSO gameSettings { get; private set; }
+
+        void Start()
+        {
+            ChangeState(GameState.MainMenu);
+        }
 
         public void ChangeState(GameState newState) 
         {
@@ -36,6 +33,9 @@ namespace _Scripts.Managers
                 case GameState.Lobby:
                     HandleLobby();
                     break;
+                case GameState.Transition:
+                    HandleTransition();
+                    break;
                 case GameState.Shooting:
                     HandleShooting();
                     break;
@@ -46,6 +46,7 @@ namespace _Scripts.Managers
                     break;
                 case GameState.Lose:
                     break;
+               
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
@@ -56,40 +57,35 @@ namespace _Scripts.Managers
         }
 
         
+
+
         private void HandleMainMenu() 
         {
             // Do some start setup, could be environment, cinematics etc
-
-            loginMenuCanvas.enabled = true;
-            lobbyCanvas.enabled = false;
-            playerCanvas.enabled = false;
-            spawningCanvas.enabled = false;
-            phaseTestingCanvas.enabled = false;
+            UIManager.Instance.ShowMainMenu();
         }
 
+        
         private void HandleLobby() 
         {
-            loginMenuCanvas.enabled = false;
-            lobbyCanvas.enabled = true;
-            playerCanvas.enabled = false;
-            phaseTestingCanvas.enabled = false;
-            spawningCanvas.enabled = false;
+            UIManager.Instance.ShowLobby();
         }
 
+        private void HandleTransition()
+        {
+            //empty for now
+            UIManager.Instance.ShowCountdown();
+            ShareManager.Instance.InitializeCountdown();
+            
+        }
         private void HandleShooting()
         {
-            lobbyCanvas.enabled = false;
-            playerCanvas.enabled = true;
-            phaseTestingCanvas.enabled = true;
-            spawningCanvas.enabled = false;
+            UIManager.Instance.ShowShootingUI();
         }
 
         private void HandleSpawning()
         {
-            lobbyCanvas.enabled = false;
-            playerCanvas.enabled = true;
-            phaseTestingCanvas.enabled = true;
-            spawningCanvas.enabled = true;
+            UIManager.Instance.ShowSpawningUI();
         }
     }
 
@@ -101,8 +97,9 @@ namespace _Scripts.Managers
     public enum GameState {
         MainMenu = 0,
         Lobby = 1,
-        Shooting = 2,
-        Spawning = 3,
+        Transition = 2,
+        Shooting = 3,
+        Spawning = 4,
         Win = 5,
         Lose = 6,
     }

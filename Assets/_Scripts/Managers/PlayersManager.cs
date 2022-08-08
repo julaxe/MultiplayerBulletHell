@@ -23,5 +23,15 @@ namespace _Scripts.Managers
             }
             return true;
         }
+
+        public Player GetPlayer1()
+        {
+            return ConnectedPlayers[0];
+        }
+        public Player GetPlayer2()
+        {
+            if (ConnectedPlayers.Count <= 1) return null;
+            return ConnectedPlayers[1];
+        }
     }
 }

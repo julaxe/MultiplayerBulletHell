@@ -16,7 +16,7 @@ namespace _Scripts.SO.Actions
         public override void OnEnter(StateController controller)
         {
             if (GameManager.Instance.State == GameState.Shooting) return;
-            GameManager.Instance.spawningCanvas.enabled = true;
+            UIManager.Instance.GetSpawningCanvas().enabled = true;
         }
     }
 }
