@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using FishNet;
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -40,16 +41,9 @@ namespace _Scripts.Utilities
             Destroy(gameObject);
         }
 
-        public override void OnStartClient()
+        public override void OnStopServer()
         {
-            base.OnStartClient();
-            InitializePool();
-        }
-
-
-        public override void OnStopClient()
-        {
-            base.OnStopClient();
+            base.OnStopServer();
             ClearPool();
         }
 
@@ -70,7 +64,7 @@ namespace _Scripts.Utilities
         /// </summary>
         /// <param name="prefab"></param>
         /// <returns></returns>
-        public NetworkObject GetNetworkObject(GameObject prefab)
+        public GameObject GetNetworkObject(GameObject prefab)
         {
             return GetNetworkObjectInternal(prefab, Vector3.zero, Quaternion.identity);
         }
@@ -82,7 +76,7 @@ namespace _Scripts.Utilities
         /// <param name="position">The position to spawn the object at.</param>
         /// <param name="rotation">The rotation to spawn the object with.</param>
         /// <returns></returns>
-        public NetworkObject GetNetworkObject(GameObject prefab, Vector3 position, Quaternion rotation)
+        public GameObject GetNetworkObject(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             return GetNetworkObjectInternal(prefab, position, rotation);
         }
@@ -141,7 +135,7 @@ namespace _Scripts.Utilities
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        private NetworkObject GetNetworkObjectInternal(GameObject prefab, Vector3 position, Quaternion rotation)
+        private GameObject GetNetworkObjectInternal(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             var queue = pooledObjects[prefab];
 
@@ -162,7 +156,7 @@ namespace _Scripts.Utilities
             go.transform.position = position;
             go.transform.rotation = rotation;
         
-            return networkObject;
+            return go;
         }
 
         /// <summary>

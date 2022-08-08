@@ -1,6 +1,8 @@
 using System.Collections;
+using _Scripts.Managers;
 using Bullet;
 using DefaultNamespace;
+using FishNet.Connection;
 using FishNet.Object;
 using SO;
 using UnityEngine;
@@ -21,16 +23,17 @@ namespace _Scripts.Units.Bullet
         {
             _networkObject = GetComponent<NetworkObject>();
         }
-
-        public void OnNetworkSpawn()
+        public override void OnStartClient()
         {
+            base.OnStartClient();
             bulletAnimation.StartVFX();
             bulletAnimation.ShowMuzzle();
             StartCoroutine(RangeCoroutine(bulletSo.rangeInSeconds));
         }
 
-        public  void OnNetworkDespawn()
+        public override void OnStopNetwork()
         {
+            base.OnStopNetwork();
             bulletAnimation.ShowHit();
         }
 
@@ -40,12 +43,21 @@ namespace _Scripts.Units.Bullet
             bulletAnimation = GetComponent<BulletAnimation>();
             bulletMovement = GetComponent<BulletMovement>();
         }
-        
+
+
+        private void Update()
+        {
+            if (!IsServer) return;
+            if (Mathf.Abs(transform.position.y) > GameManager.Instance.gameSettings.screenHeight)
+            {
+                //transform.position = new Vector3(0.0f, gameSettingsSo.screenHeight * 0.5f, 0.0f);
+                ReturnBulletToPool();
+            }
+        }
 
         public void OnShoot(Vector3 direction)
         {
             bulletMovement.SetDirection(direction);
-            
         }
 
         IEnumerator RangeCoroutine(float seconds)

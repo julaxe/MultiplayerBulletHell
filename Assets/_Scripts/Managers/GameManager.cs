@@ -13,7 +13,7 @@ namespace _Scripts.Managers
 
         public GameState State { get; private set; }
 
-        public GameSettingsSO gameSettings { get; private set; }
+        public GameSettingsSO gameSettings;
 
         void Start()
         {
@@ -76,6 +76,7 @@ namespace _Scripts.Managers
             //empty for now
             UIManager.Instance.ShowCountdown();
             ShareManager.Instance.InitializeCountdown();
+            NetworkObjectPool.Instance.InitializePool();
             
         }
         private void HandleShooting()

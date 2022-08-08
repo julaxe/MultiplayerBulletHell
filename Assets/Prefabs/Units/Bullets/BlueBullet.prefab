@@ -19399,6 +19399,7 @@ GameObject:
   - component: {fileID: 3642440206188894587}
   - component: {fileID: 3642440206188894586}
   - component: {fileID: 2994034746590540153}
+  - component: {fileID: 756522315904726744}
   m_Layer: 6
   m_Name: BlueBullet
   m_TagString: Player1
@@ -19528,6 +19529,7 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 3642440206188894585}
   - {fileID: 3642440206188894586}
+  - {fileID: 756522315904726744}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -19539,3 +19541,45 @@ MonoBehaviour:
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 3206976746301546729
   _sceneNetworkObjects: []
+--- !u!114 &756522315904726744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680445273153400923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 2994034746590540153}
+  _networkObjectCache: {fileID: 2994034746590540153}
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _interpolation: 1
+  _extrapolation: 2
+  _enableTeleport: 1
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _interval: 1
+  _synchronizePosition: 1
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 0
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0

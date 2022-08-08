@@ -102,5 +102,6 @@ namespace _Scripts.Managers
             var newPrefab = Instantiate(playerPrefab);
             InstanceFinder.ServerManager.Spawn(newPrefab, ownerConnection);
         }
+        
     }
 }
