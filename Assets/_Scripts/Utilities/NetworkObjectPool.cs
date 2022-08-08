@@ -40,15 +40,16 @@ namespace _Scripts.Utilities
             Destroy(gameObject);
         }
 
-        public override void OnStartServer()
+        public override void OnStartClient()
         {
-            base.OnStartServer();
+            base.OnStartClient();
             InitializePool();
         }
 
-        public override void OnStopServer()
+
+        public override void OnStopClient()
         {
-            base.OnStopServer();
+            base.OnStopClient();
             ClearPool();
         }
 

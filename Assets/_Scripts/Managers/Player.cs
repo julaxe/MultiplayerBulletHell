@@ -4,6 +4,7 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _Scripts.Managers
 {
@@ -17,6 +18,8 @@ namespace _Scripts.Managers
 
         public PlayerInputManager playerInput;
 
+        public PlayerInput input;
+
         //Used in the lobby
         [SyncVar(OnChange = nameof(IsReadyIsChanged))] public bool isReady;
 
@@ -26,6 +29,7 @@ namespace _Scripts.Managers
             PlayersManager.Instance.ConnectedPlayers.Add(this);
             isPlayer1 = PlayersManager.Instance.ConnectedPlayers.Count == 1;
             playerInput.enabled =  IsOwner;
+            input.enabled = IsOwner;
             
             if (!IsOwner) return;
             Instance = this;

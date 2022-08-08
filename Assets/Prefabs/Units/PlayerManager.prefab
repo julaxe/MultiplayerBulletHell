@@ -53,6 +53,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 5807574560273456485, guid: c488390998600b543a6878332de367de, type: 3}
   isPlayer1: 0
   playerInput: {fileID: 8368480046472524508}
+  input: {fileID: -7109712984027743476}
   isReady: 0
 --- !u!114 &5916720000348962803
 MonoBehaviour:
