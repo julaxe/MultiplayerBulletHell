@@ -1,13 +1,21 @@
 using System;
+using FishNet;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using UnityEngine;
 
 namespace _Scripts.Managers
 {
     public class Player : NetworkBehaviour
     {
         public static Player Instance { get; private set; }
+
+        public GameObject playerPrefab;
+
+        public bool isPlayer1;
+
+        public PlayerInputManager playerInput;
 
         //Used in the lobby
         [SyncVar(OnChange = nameof(IsReadyIsChanged))] public bool isReady;
@@ -16,6 +24,8 @@ namespace _Scripts.Managers
         {
             base.OnStartClient();
             PlayersManager.Instance.ConnectedPlayers.Add(this);
+            isPlayer1 = PlayersManager.Instance.ConnectedPlayers.Count == 1;
+            playerInput.enabled =  IsOwner;
             
             if (!IsOwner) return;
             Instance = this;
@@ -81,6 +91,12 @@ namespace _Scripts.Managers
         
 
         #endregion
-        
+
+
+        public void ServerSpawnPlayerPrefab(NetworkConnection ownerConnection)
+        {
+            var newPrefab = Instantiate(playerPrefab);
+            InstanceFinder.ServerManager.Spawn(newPrefab, ownerConnection);
+        }
     }
 }

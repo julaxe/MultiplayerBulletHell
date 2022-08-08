@@ -1960,7 +1960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConnectedPlayers: []
-  isPlayer1: 0
 --- !u!4 &690320994
 Transform:
   m_ObjectHideFlags: 0

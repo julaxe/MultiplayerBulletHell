@@ -19,15 +19,19 @@ namespace _Scripts.Units.Player
         private bool _inTransition = false;
 
 
-        public void OnNetworkSpawn()
+        public override void OnStartNetwork()
         {
-            if (IsOwner) return;
-            enabled = false;
-        }
-
-        private void Start()
-        {
+            base.OnStartNetwork();
+            if (!IsOwner)
+            {
+                enabled = false;
+                return;
+            }
+            
             GameManager.OnBeforeStateChanged += StartTransition;
+            if(!Managers.Player.Instance.isPlayer1) RotatePlayer2();
+            
+            
         }
 
         private void Update()
@@ -46,9 +50,13 @@ namespace _Scripts.Units.Player
             }
         }
 
+        private void RotatePlayer2()
+        {
+            transform.rotation = Quaternion.Euler(90,180,0.0f);
+        }
         private void TransitionIn()
         {
-            if (PlayersManager.Instance.isPlayer1)
+            if (Managers.Player.Instance.isPlayer1)
             {
                 LerpTo(initialPositionPlayer1, 0.1f);
             }
@@ -60,7 +68,7 @@ namespace _Scripts.Units.Player
 
         private void TransitionOut()
         {
-            if (PlayersManager.Instance.isPlayer1)
+            if (Managers.Player.Instance.isPlayer1)
             {
                 LerpTo(transitionPositionPlayer1, 0.1f);
             }

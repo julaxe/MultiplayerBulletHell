@@ -29,8 +29,9 @@ namespace _Scripts.Units.Player
             GameManager.OnAfterStateChanged -= OnChangeState;
         }
 
-        public void OnNetworkSpawn()
+        public override void OnStartNetwork()
         {
+            base.OnStartNetwork();
             if (!IsOwner)
             {
                 ChangeToEnemy();
@@ -40,7 +41,10 @@ namespace _Scripts.Units.Player
                 //is player
                 weaponSo.bulletSo.bulletPrefab.tag = "Player1";
             }
+
+            enabled = IsOwner;
         }
+        
         void ChangeToEnemy()
         {
             weaponSo = enemyWeapon;
@@ -49,14 +53,13 @@ namespace _Scripts.Units.Player
 
         private void FixedUpdate()
         {
-            if (!IsOwner) return;
             if (GameManager.Instance.State == GameState.Spawning) return;
             if (!_isShooting) return;
             
             if (_timer >= fireRateInSeconds)
             {
                 _timer = 0.0f;
-                Shoot_ServerRpc();
+                //Shoot_ServerRpc();
             }
             _timer += Time.fixedDeltaTime;
         }

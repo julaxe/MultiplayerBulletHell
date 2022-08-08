@@ -9,7 +9,6 @@ namespace _Scripts.Managers
     {
         public static event Action<bool> PlayerIsReadyChanged;
         public List<Player> ConnectedPlayers;
-        public bool isPlayer1;
         public void InvokePlayerReadyChanged(bool value)
         {
             PlayerIsReadyChanged?.Invoke(value);
@@ -32,6 +31,14 @@ namespace _Scripts.Managers
         {
             if (ConnectedPlayers.Count <= 1) return null;
             return ConnectedPlayers[1];
+        }
+
+        public void SpawnPlayersPrefabs()
+        {
+            foreach (var player in ConnectedPlayers)
+            {
+                player.ServerSpawnPlayerPrefab(player.Owner);
+            }
         }
     }
 }

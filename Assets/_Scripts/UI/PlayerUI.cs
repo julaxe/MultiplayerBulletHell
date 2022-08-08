@@ -13,13 +13,6 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        if (PlayersManager.Instance.isPlayer1)
-        {
-           
-        }
-        else
-        {
-            
-        }
+        
     }
 }

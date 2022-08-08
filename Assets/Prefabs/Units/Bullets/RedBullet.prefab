@@ -9814,7 +9814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 0}
+  _addedNetworkObject: {fileID: 889241278370675841}
   _networkObjectCache: {fileID: 889241278370675841}
   bulletSo: {fileID: 11400000, guid: 5edf06f2209019147a120c30e2264613, type: 2}
   bulletAnimation: {fileID: 1521761997912139406}
@@ -9842,7 +9842,7 @@ MonoBehaviour:
   _isGlobal: 0
   _disableOnDespawn: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: -1
+  <PrefabId>k__BackingField: 3
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 10498753263904913621

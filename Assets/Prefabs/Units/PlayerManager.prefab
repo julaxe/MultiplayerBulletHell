@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8583433012910138867}
   - component: {fileID: 255823764880624079}
   - component: {fileID: 5916720000348962803}
+  - component: {fileID: -7109712984027743476}
+  - component: {fileID: 8368480046472524508}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: PlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +50,9 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 5916720000348962803}
   _networkObjectCache: {fileID: 5916720000348962803}
+  playerPrefab: {fileID: 5807574560273456485, guid: c488390998600b543a6878332de367de, type: 3}
+  isPlayer1: 0
+  playerInput: {fileID: 8368480046472524508}
   isReady: 0
 --- !u!114 &5916720000348962803
 MonoBehaviour:
@@ -71,10 +76,53 @@ MonoBehaviour:
   _isGlobal: 0
   _disableOnDespawn: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: -1
+  <PrefabId>k__BackingField: 2
   _scenePathHash: 3819267925
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 3247786022121533869
+  <AssetPathHash>k__BackingField: 7846087623129808887
   _sceneNetworkObjects:
   - {fileID: 5916720000348962803}
   - {fileID: 0}
+--- !u!114 &-7109712984027743476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808957483529569979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 27cce70a42963494fa7b7763b2a6aab3, type: 3}
+  m_NotificationBehavior: 1
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &8368480046472524508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808957483529569979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44544fdd07904181a6f72d1ca947add9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
