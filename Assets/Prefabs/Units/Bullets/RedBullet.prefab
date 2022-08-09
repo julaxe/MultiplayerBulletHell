@@ -9866,7 +9866,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 889241278370675841}
   _synchronizeParent: 0
   _packing:
-    Position: 1
+    Position: 2
     Rotation: 1
     Scale: 0
   _interpolation: 1

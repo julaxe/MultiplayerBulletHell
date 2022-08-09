@@ -34,11 +34,12 @@ namespace _Scripts.Units.Enemies
             weapon = GetComponent<WeaponBehaviour>();
         }
 
-        // public override void OnNetworkSpawn()
-        // {
-        //     enabled = IsOwner;
-        //     TransitionToState(initialState);
-        // }
+        public override void OnStartNetwork()
+        {
+            base.OnStartNetwork();
+            enabled = IsOwner;
+            TransitionToState(initialState);
+        }
 
         private void Update()
         {

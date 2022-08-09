@@ -1,3 +1,4 @@
+using _Scripts.Managers;
 using FishNet.Object;
 using SO;
 using UnityEngine;
@@ -10,20 +11,19 @@ namespace _Scripts.Units.Enemies
         [SerializeField] private GameSettingsSO gameSettings;
         private bool _initialized;
 
-        // public override void OnNetworkSpawn()
-        // {
-        //     _initialized = false;
-        //     enabled = IsOwner;
-        // }
+        public override void OnStartNetwork()
+        {
+            base.OnStartNetwork();
+            _initialized = false;
+            enabled = IsOwner;
+        }
 
         private void Update()
         {
             if (!_initialized)
             {
-                _initialized = true;
                 float randomX = Random.Range(-gameSettings.screenWidth*0.4f, gameSettings.screenWidth*0.4f);
-                bool isPlayer1 = OwnerId == 0;
-                Initialize(randomX, isPlayer1);
+                Initialize(randomX, Player.Instance.isPlayer1);
             }
         }
 
@@ -39,6 +39,8 @@ namespace _Scripts.Units.Enemies
                 transform.localRotation = Quaternion.Euler(-90.0f,0.0f,0.0f);
                 transform.position = new Vector3(xPosition, gameSettings.screenHeight*0.4f, 0.0f);
             }
+
+            _initialized = true;
         }
 
     }

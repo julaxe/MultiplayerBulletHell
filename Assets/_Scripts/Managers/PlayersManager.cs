@@ -29,8 +29,13 @@ namespace _Scripts.Managers
         }
         public Player GetPlayer2()
         {
-            if (ConnectedPlayers.Count <= 1) return null;
+            if (!Player2Exists()) return null;
             return ConnectedPlayers[1];
+        }
+
+        public bool Player2Exists()
+        {
+            return ConnectedPlayers.Count > 1;
         }
 
         public void SpawnPlayersPrefabs()

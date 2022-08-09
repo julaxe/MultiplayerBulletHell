@@ -76,11 +76,13 @@ namespace _Scripts.Managers
             {
                 case GameState.Spawning:
                     ChangeStateToSpecificClient(Owner, GameState.Shooting);
-                    ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
+                    if(PlayersManager.Instance.Player2Exists())
+                        ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
                     break;
                 case GameState.Shooting:
                     ChangeStateToSpecificClient(Owner, GameState.Spawning);
-                    ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Shooting);
+                    if(PlayersManager.Instance.Player2Exists())
+                        ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Shooting);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(currentState), currentState, null);
@@ -101,6 +103,13 @@ namespace _Scripts.Managers
         {
             var newPrefab = Instantiate(playerPrefab);
             InstanceFinder.ServerManager.Spawn(newPrefab, ownerConnection);
+        }
+
+        [ServerRpc]
+        public void ServerSpawnPrefab(GameObject prefab)
+        {
+            var temp = Instantiate(prefab);
+            Spawn(temp, Owner);
         }
         
     }
