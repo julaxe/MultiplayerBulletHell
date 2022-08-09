@@ -17,7 +17,7 @@ namespace _Scripts.Managers
 
         void Start()
         {
-            ChangeState(GameState.MainMenu);
+            ChangeState(GameState.Lobby);
         }
 
         public void ChangeState(GameState newState) 
@@ -27,9 +27,6 @@ namespace _Scripts.Managers
             State = newState;
             switch (newState) 
             {
-                case GameState.MainMenu:
-                    HandleMainMenu();
-                    break;
                 case GameState.Lobby:
                     HandleLobby();
                     break;
@@ -55,16 +52,7 @@ namespace _Scripts.Managers
         
             Debug.Log($"New state: {newState}");
         }
-
         
-
-
-        private void HandleMainMenu() 
-        {
-            // Do some start setup, could be environment, cinematics etc
-            UIManager.Instance.ShowMainMenu();
-        }
-
         
         private void HandleLobby() 
         {
@@ -96,7 +84,6 @@ namespace _Scripts.Managers
     /// </summary>
     [Serializable]
     public enum GameState {
-        MainMenu = 0,
         Lobby = 1,
         Transition = 2,
         Shooting = 3,

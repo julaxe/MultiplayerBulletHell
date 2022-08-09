@@ -7,7 +7,6 @@ namespace _Scripts.Managers
 {
     public class UIManager : Singleton<UIManager>
     {
-        [SerializeField] private Canvas loginMenuCanvas;
         [SerializeField] private Canvas lobbyCanvas;
         [SerializeField] private Canvas countDownCanvas;
         [SerializeField] private Canvas playerCanvas;
@@ -18,7 +17,6 @@ namespace _Scripts.Managers
 
         void Start()
         {
-            _canvasList.Add(loginMenuCanvas);
             _canvasList.Add(lobbyCanvas);
             _canvasList.Add(countDownCanvas);
             _canvasList.Add(playerCanvas);
@@ -33,12 +31,7 @@ namespace _Scripts.Managers
                 canvas.enabled = canvasesToShow.Contains(canvas);
             }
         }
-
-        public void ShowMainMenu()
-        {
-            ShowCanvas(loginMenuCanvas);
-        }
-
+        
         public void ShowLobby()
         {
             ShowCanvas(lobbyCanvas);

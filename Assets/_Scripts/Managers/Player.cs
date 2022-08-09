@@ -13,7 +13,9 @@ namespace _Scripts.Managers
         public static Player Instance { get; private set; }
 
         public GameObject playerPrefab;
-
+        
+        private Camera _mainCamera;
+        
         [SyncVar] public float hp = 100.0f;
         [SyncVar] public int score = 0;
 
@@ -35,6 +37,7 @@ namespace _Scripts.Managers
             input.enabled = IsOwner;
             
             if (!IsOwner) return;
+            if(!isPlayer1) RotateCamera();
             Instance = this;
         }
 
@@ -51,6 +54,12 @@ namespace _Scripts.Managers
 
             hp -= damage;
             if (hp < 0.0f) hp = 0.0f;
+        }
+        
+        private void RotateCamera()
+        {
+            _mainCamera = Camera.current;
+            _mainCamera.transform.Rotate(new Vector3(0.0f,0.0f,180.0f));
         }
         
         #region IsReady

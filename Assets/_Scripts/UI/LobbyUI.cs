@@ -1,4 +1,3 @@
-using System;
 using _Scripts.Managers;
 using FishNet;
 using UnityEngine;
@@ -30,11 +29,11 @@ namespace _Scripts.UI
             if (state != GameState.Lobby) return;
             readyButton.onClick.AddListener(() =>
             {
-                Managers.Player.Instance.ServerSetIsReady(!Managers.Player.Instance.isReady);
+                Player.Instance.ServerSetIsReady(!Managers.Player.Instance.isReady);
             });
             startButton.onClick.AddListener(() =>
             {
-                Managers.Player.Instance.ChangeStateOnAllClients(GameState.Transition);
+                Player.Instance.ChangeStateOnAllClients(GameState.Transition);
             });
         }
 
@@ -45,7 +44,9 @@ namespace _Scripts.UI
 
         private void Update()
         {
-            if (!InstanceFinder.IsHost) return;
+            if (InstanceFinder.IsServer) return;
+            if (Player.Instance == null) return;
+            if (!Player.Instance.isPlayer1) return;
             startButton.interactable = PlayersManager.Instance.PlayersAreReady();
         }
     }
