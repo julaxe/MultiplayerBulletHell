@@ -14,6 +14,9 @@ namespace _Scripts.Managers
 
         public GameObject playerPrefab;
 
+        [SyncVar] public float hp = 100.0f;
+        [SyncVar] public int score = 0;
+
         public bool isPlayer1;
 
         public PlayerInputManager playerInput;
@@ -35,6 +38,21 @@ namespace _Scripts.Managers
             Instance = this;
         }
 
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            hp = 100;
+            score = 0;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            if (hp == 0.0f) return;
+
+            hp -= damage;
+            if (hp < 0.0f) hp = 0.0f;
+        }
+        
         #region IsReady
         private void IsReadyIsChanged(bool prev, bool actual, bool asServer)
         {

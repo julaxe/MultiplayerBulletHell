@@ -42,23 +42,18 @@ namespace _Scripts.Managers
             ReturnToBulletPool();
         }
         
-        private void ScoreFromServer(int value, bool isPlayer)
+        private void ScoreFromServer(int value, bool isPlayer1)
         {
-            Score_ClientRpc(value, isPlayer);
+            if (isPlayer1)
+            {
+                PlayersManager.Instance.GetPlayer1().score += value;
+            }
+            else
+            {
+                PlayersManager.Instance.GetPlayer2().score += value;
+            }
         }
-        [ObserversRpc]
-        private void Score_ClientRpc(int value, bool isPlayer1)
-        {
-            // if (isPlayer1)
-            // {
-            //     PlayersManager.Instance.player1Info.score += value;
-            // }
-            // else
-            // {
-            //     PlayersManager.Instance.player2Info.score += value;
-            // }
-        }
-        
+
         private void ReturnToBulletPool()
         {
             transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
