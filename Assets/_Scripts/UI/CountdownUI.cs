@@ -14,9 +14,9 @@ namespace _Scripts.UI
         private void OnCountdownFinished()
         {
             PlayersManager.Instance.SpawnPlayersPrefabs();
-            Managers.Player.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer1().Owner, GameState.Shooting);
-            if(PlayersManager.Instance.GetPlayer2() != null)
-                Managers.Player.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
+            PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer1().Owner, GameState.Shooting);
+            if(PlayersManager.Instance.Player2Exists())
+                PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
         }
 
         private void Update()

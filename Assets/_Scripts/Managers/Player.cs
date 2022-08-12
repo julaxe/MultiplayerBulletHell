@@ -19,7 +19,7 @@ namespace _Scripts.Managers
         [SyncVar] public float hp = 100.0f;
         [SyncVar] public int score = 0;
 
-        public bool isPlayer1 => PlayersManager.Instance.ConnectedPlayers[0] == this;
+        [SyncVar] public bool isPlayer1 = false;
 
         public PlayerInputManager playerInput;
 
@@ -31,20 +31,27 @@ namespace _Scripts.Managers
         public override void OnStartClient()
         {
             base.OnStartClient();
+            
             playerInput.enabled =  IsOwner;
             input.enabled = IsOwner;
             
             if (!IsOwner) return;
-            if(!isPlayer1) RotateCamera();
+            PlayersManager.Instance.AddPlayer(this);
+            
+            
             Instance = this;
         }
 
         public override void OnStartServer()
         {
             base.OnStartServer();
-            PlayersManager.Instance.ConnectedPlayers.Add(this);
             hp = 100;
             score = 0;
+        }
+
+        private void Start()
+        {
+            if(!isPlayer1) RotateCamera();
         }
 
         public void TakeDamage(float damage)
@@ -57,7 +64,7 @@ namespace _Scripts.Managers
         
         private void RotateCamera()
         {
-            _mainCamera = Camera.current;
+            _mainCamera = Camera.main;
             _mainCamera.transform.Rotate(new Vector3(0.0f,0.0f,180.0f));
         }
         
@@ -101,25 +108,21 @@ namespace _Scripts.Managers
             switch (currentState)
             {
                 case GameState.Spawning:
-                    ChangeStateToSpecificClient(Owner, GameState.Shooting);
+                    PlayersManager.Instance.ChangeStateToSpecificClient(Owner, GameState.Shooting);
                     if(PlayersManager.Instance.Player2Exists())
-                        ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
+                        PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
                     break;
                 case GameState.Shooting:
-                    ChangeStateToSpecificClient(Owner, GameState.Spawning);
+                    PlayersManager.Instance.ChangeStateToSpecificClient(Owner, GameState.Spawning);
                     if(PlayersManager.Instance.Player2Exists())
-                        ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Shooting);
+                        PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Shooting);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(currentState), currentState, null);
             }
         }
 
-        [TargetRpc]
-        public void ChangeStateToSpecificClient(NetworkConnection conn, GameState newState)
-        {
-            GameManager.Instance.ChangeState(newState);
-        }
+        
         
 
         #endregion
