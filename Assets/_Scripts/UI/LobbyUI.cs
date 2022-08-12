@@ -33,7 +33,7 @@ namespace _Scripts.UI
             });
             startButton.onClick.AddListener(() =>
             {
-                Player.Instance.ChangeStateOnAllClients(GameState.Transition);
+                Player.Instance.ChangeStateForEveryBody(GameState.Transition);
             });
         }
 

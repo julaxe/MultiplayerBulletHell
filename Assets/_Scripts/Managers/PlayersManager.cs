@@ -1,14 +1,24 @@
 using System;
 using System.Collections.Generic;
-using _Scripts.Utilities;
+
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 
 namespace _Scripts.Managers
 {
-    public class PlayersManager : Singleton<PlayersManager>
+    public class PlayersManager : NetworkBehaviour
     {
+        public static PlayersManager Instance { get; private set; }
         public static event Action<bool> PlayerIsReadyChanged;
-        public List<Player> ConnectedPlayers;
+        [SyncVar] public List<Player> ConnectedPlayers;
+
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            Instance = this;
+        }
+
         public void InvokePlayerReadyChanged(bool value)
         {
             PlayerIsReadyChanged?.Invoke(value);

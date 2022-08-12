@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Default_Scene.unity
     guid: 4085a268cd613d44c89273f5c172f834
   - enabled: 1
-    path: Assets/Scenes/Server_Scene.unity
-    guid: 30c93f4337ffa8149979d4e75941b3d3
-  - enabled: 1
     path: Assets/Scenes/Client_Scene.unity
     guid: e6b2381d6bca8dd4a8c8fe5a14e553bd
+  - enabled: 1
+    path: Assets/Scenes/Server_Scene.unity
+    guid: 30c93f4337ffa8149979d4e75941b3d3
   - enabled: 1
     path: Assets/Scenes/Game_Scene.unity
     guid: 6ecac4e5ee5b9654db0a8125716c19e2

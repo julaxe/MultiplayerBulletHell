@@ -147,9 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0adf07212615104aa62424963ffc366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 0}
   enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
 --- !u!1 &949913301693171118
 GameObject:

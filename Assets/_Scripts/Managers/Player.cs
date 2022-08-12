@@ -19,7 +19,7 @@ namespace _Scripts.Managers
         [SyncVar] public float hp = 100.0f;
         [SyncVar] public int score = 0;
 
-        public bool isPlayer1;
+        public bool isPlayer1 => PlayersManager.Instance.ConnectedPlayers[0] == this;
 
         public PlayerInputManager playerInput;
 
@@ -31,8 +31,6 @@ namespace _Scripts.Managers
         public override void OnStartClient()
         {
             base.OnStartClient();
-            PlayersManager.Instance.ConnectedPlayers.Add(this);
-            isPlayer1 = PlayersManager.Instance.ConnectedPlayers.Count == 1;
             playerInput.enabled =  IsOwner;
             input.enabled = IsOwner;
             
@@ -44,6 +42,7 @@ namespace _Scripts.Managers
         public override void OnStartServer()
         {
             base.OnStartServer();
+            PlayersManager.Instance.ConnectedPlayers.Add(this);
             hp = 100;
             score = 0;
         }
