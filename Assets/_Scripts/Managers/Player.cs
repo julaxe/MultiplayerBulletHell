@@ -16,7 +16,7 @@ namespace _Scripts.Managers
         
         private Camera _mainCamera;
         
-        [SyncVar] public float hp = 100.0f;
+        [SyncVar(OnChange = nameof(OnTakeDamage))] public float hp = 100.0f;
         [SyncVar] public int score = 0;
 
         [SyncVar] public bool isPlayer1 = false;
@@ -24,6 +24,8 @@ namespace _Scripts.Managers
         public PlayerInputManager playerInput;
 
         public PlayerInput input;
+
+        [SerializeField] private AudioClip damageClip;
 
         //Used in the lobby
         [SyncVar(OnChange = nameof(IsReadyIsChanged))] public bool isReady;
@@ -49,11 +51,6 @@ namespace _Scripts.Managers
             score = 0;
         }
 
-        private void Start()
-        {
-            if(!isPlayer1) RotateCamera();
-        }
-
         public void TakeDamage(float damage)
         {
             if (hp == 0.0f) return;
@@ -61,12 +58,12 @@ namespace _Scripts.Managers
             hp -= damage;
             if (hp < 0.0f) hp = 0.0f;
         }
-        
-        private void RotateCamera()
+
+        private void OnTakeDamage(float previous, float current, bool onServer)
         {
-            _mainCamera = Camera.main;
-            _mainCamera.transform.Rotate(new Vector3(0.0f,0.0f,180.0f));
+            AudioSystem.Instance.PlaySound(damageClip);
         }
+        
         
         #region IsReady
         private void IsReadyIsChanged(bool prev, bool actual, bool asServer)

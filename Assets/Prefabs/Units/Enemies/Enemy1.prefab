@@ -175,6 +175,7 @@ MonoBehaviour:
   _componentIndexCache: 3
   _addedNetworkObject: {fileID: 1340566148915590208}
   _networkObjectCache: {fileID: 1340566148915590208}
+  explosionClip: {fileID: 8300000, guid: 9956a5725b138e94cbce795a1f99e6bd, type: 3}
 --- !u!114 &1340566148915590208
 MonoBehaviour:
   m_ObjectHideFlags: 0

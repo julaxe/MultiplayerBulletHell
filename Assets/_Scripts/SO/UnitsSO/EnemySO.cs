@@ -7,5 +7,6 @@ namespace SO
     {
         public GameObject enemyPrefab;
         public Sprite image;
+        public AudioClip spawnSound;
     }
 }

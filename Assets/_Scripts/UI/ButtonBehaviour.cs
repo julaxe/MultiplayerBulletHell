@@ -12,6 +12,7 @@ namespace _Scripts.UI
         public void SpawnEnemy()
         {
             SpawnEnemy_ServerRpc(Managers.Player.Instance.isPlayer1);
+            AudioSystem.Instance.PlaySound(enemySo.spawnSound);
         }
         
         

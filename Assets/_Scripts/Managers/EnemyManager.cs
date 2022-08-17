@@ -7,6 +7,8 @@ namespace _Scripts.Managers
     {
         private NetworkObject _networkObject;
         
+        [SerializeField] private AudioClip explosionClip;
+        
         private void Awake()
         {
             _networkObject = GetComponent<NetworkObject>();
@@ -39,8 +41,16 @@ namespace _Scripts.Managers
             {
                 ScoreFromServer(10, false);
             }
+            PlayExplosionClip();
             ReturnToBulletPool();
         }
+
+        [ObserversRpc]
+        private void PlayExplosionClip()
+        {
+            AudioSystem.Instance.PlaySound(explosionClip);
+        }
+        
         
         private void ScoreFromServer(int value, bool isPlayer1)
         {

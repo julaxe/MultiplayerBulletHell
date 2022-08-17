@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: First Weapon
   bulletSo: {fileID: 11400000, guid: 1a4f63e35952c0645a6dfa8774627bd6, type: 2}
+  clip: {fileID: 8300000, guid: 5aabfa1c30930ec4ea1400f50815d3f1, type: 3}
   ammo: 30

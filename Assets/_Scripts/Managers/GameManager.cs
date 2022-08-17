@@ -9,8 +9,10 @@ namespace _Scripts.Managers
     public class GameManager : StaticInstance<GameManager> {
         public static event Action<GameState> OnBeforeStateChanged;
         public static event Action<GameState> OnAfterStateChanged;
-        
 
+
+        [SerializeField] private AudioClip lobbyClip;
+        [SerializeField] private AudioClip shootingClip;
         public GameState State { get; private set; }
 
         public GameSettingsSO gameSettings;
@@ -57,6 +59,7 @@ namespace _Scripts.Managers
         private void HandleLobby() 
         {
             UIManager.Instance.ShowLobby();
+            AudioSystem.Instance.PlayMusic(lobbyClip);
         }
 
         private void HandleTransition()
@@ -66,6 +69,11 @@ namespace _Scripts.Managers
             ShareManager.Instance.InitializeCountdown();
             NetworkObjectPool.Instance.InitializePool();
             
+        }
+
+        public void HandleStartGameAfterCountdown()
+        {
+            AudioSystem.Instance.PlayMusic(shootingClip);
         }
         private void HandleShooting()
         {

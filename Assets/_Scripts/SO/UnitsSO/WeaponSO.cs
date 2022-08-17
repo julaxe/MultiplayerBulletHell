@@ -7,6 +7,7 @@ namespace SO
     {
         public  string weaponName;
         public BulletSO bulletSo;
+        public AudioClip clip;
         public int ammo;
     }
 }

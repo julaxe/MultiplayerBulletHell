@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7805056323437912549, guid: d9501169c7e590241b816f4dc7571336, type: 3}
   image: {fileID: 0}
+  spawnSound: {fileID: 8300000, guid: 94e7ad0d3689f3b4ebf8e8f2f4db28ed, type: 3}

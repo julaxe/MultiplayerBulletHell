@@ -51,9 +51,12 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5916720000348962803}
   _networkObjectCache: {fileID: 5916720000348962803}
   playerPrefab: {fileID: 5807574560273456485, guid: c488390998600b543a6878332de367de, type: 3}
+  hp: 100
+  score: 0
   isPlayer1: 0
   playerInput: {fileID: 8368480046472524508}
   input: {fileID: -7109712984027743476}
+  damageClip: {fileID: 8300000, guid: 85c16d0eb54bc0d40acbae871ef2c0b4, type: 3}
   isReady: 0
 --- !u!114 &5916720000348962803
 MonoBehaviour:

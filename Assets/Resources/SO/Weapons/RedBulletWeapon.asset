@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Red Bullet Weapon
   bulletSo: {fileID: 11400000, guid: 5edf06f2209019147a120c30e2264613, type: 2}
+  clip: {fileID: 8300000, guid: 85c8eae64789a724297e48deeb7e93c5, type: 3}
   ammo: 50

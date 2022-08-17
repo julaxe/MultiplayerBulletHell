@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using UnityEngine;
 
 
 namespace _Scripts.Managers
@@ -35,6 +36,12 @@ namespace _Scripts.Managers
         public void ChangeStateToSpecificClient(NetworkConnection conn, GameState newState)
         {
             GameManager.Instance.ChangeState(newState);
+        }
+
+        [ObserversRpc]
+        public void ChangeMusicToShooting()
+        {
+            GameManager.Instance.HandleStartGameAfterCountdown();
         }
         
         public void InvokePlayerReadyChanged(bool value)

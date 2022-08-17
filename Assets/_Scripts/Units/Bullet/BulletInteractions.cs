@@ -15,6 +15,7 @@ namespace _Scripts.Units.Bullet
         [SerializeField] private BulletSO bulletSo;
         [SerializeField] private BulletAnimation bulletAnimation;
         [SerializeField] private BulletMovement bulletMovement;
+  
 
         private NetworkObject _networkObject;
         private Coroutine _rangeCoroutine;
@@ -69,9 +70,11 @@ namespace _Scripts.Units.Bullet
         private void OnTriggerEnter(Collider other)
         {
             if (!IsServer) return;
-            
             ReturnBulletToPool();
         }
+        
+       
+        
         private void ReturnBulletToPool()
         {
             _networkObject.Despawn();

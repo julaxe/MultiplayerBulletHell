@@ -1,3 +1,4 @@
+using System;
 using _Scripts.Managers;
 using FishNet.Object;
 using UnityEngine;
@@ -27,12 +28,11 @@ namespace _Scripts.Units.Player
                 enabled = false;
                 return;
             }
-            
-            GameManager.OnBeforeStateChanged += StartTransition;
             if(!Managers.Player.Instance.isPlayer1) RotatePlayer2();
-            
-            
+            GameManager.OnBeforeStateChanged += StartTransition;
+
         }
+        
 
         private void Update()
         {
@@ -52,7 +52,12 @@ namespace _Scripts.Units.Player
 
         private void RotatePlayer2()
         {
+            RotateCamera();
             transform.rotation = Quaternion.Euler(90,180,0.0f);
+        }
+        private void RotateCamera()
+        {
+            Camera.main.transform.Rotate(new Vector3(0.0f,0.0f,180.0f));
         }
         private void TransitionIn()
         {

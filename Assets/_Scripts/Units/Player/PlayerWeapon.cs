@@ -27,12 +27,7 @@ namespace _Scripts.Units.Player
         public void OnDestroy()
         {
             GameManager.OnAfterStateChanged -= OnChangeState;
-        }
-
-        public override void OnStartNetwork()
-        {
-            base.OnStartNetwork();
-            if (!IsOwner)
+            if (!Managers.Player.Instance.isPlayer1)
             {
                 ChangeToEnemy();
             }
@@ -41,7 +36,11 @@ namespace _Scripts.Units.Player
                 //is player
                 weaponSo.bulletSo.bulletPrefab.tag = "Player1";
             }
+        }
 
+        public override void OnStartNetwork()
+        {
+            base.OnStartNetwork();
             enabled = IsOwner;
         }
         
@@ -59,6 +58,7 @@ namespace _Scripts.Units.Player
             if (_timer >= fireRateInSeconds)
             {
                 _timer = 0.0f;
+                AudioSystem.Instance.PlaySound(weaponSo.clip);
                 Shoot_ServerRpc();
             }
             _timer += Time.fixedDeltaTime;
@@ -75,8 +75,7 @@ namespace _Scripts.Units.Player
 
             _isShooting = false;
         }
-        
-        
+
 
         [ServerRpc]
         private void Shoot_ServerRpc()
