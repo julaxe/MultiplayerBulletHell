@@ -221,7 +221,7 @@ MonoBehaviour:
   _attackResponseType: 1
   _ipv4BindAddress: 
   _ipv6BindAddress: 
-  _port: 7770
+  _port: 15519
   _maximumClients: 8
   _clientAddress: localhost
   _timeout: 15
