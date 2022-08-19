@@ -9,6 +9,7 @@ namespace _Scripts.Units.Enemies
     {
         //enemy
         public WeaponBehaviour weapon;
+        public bool isInvulnerable = false;
         
         //interactable
         public float clickRadius = 0.1f;

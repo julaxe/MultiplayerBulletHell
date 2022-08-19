@@ -1,17 +1,20 @@
+using _Scripts.Managers;
 using FishNet.Object;
 using UnityEngine;
 
-namespace _Scripts.Managers
+namespace _Scripts.Units.Enemies
 {
-    public class EnemyManager : NetworkBehaviour
+    public class EnemyController : NetworkBehaviour
     {
         private NetworkObject _networkObject;
+        private StateController _stateController; 
         
         [SerializeField] private AudioClip explosionClip;
         
         private void Awake()
         {
             _networkObject = GetComponent<NetworkObject>();
+            _stateController = GetComponent<StateController>();
         }
         
         public override void OnStartNetwork()
@@ -32,6 +35,10 @@ namespace _Scripts.Managers
         private void OnTriggerEnter(Collider other)
         {
             if (!IsServer) return;
+            
+            PlayExplosionClip();
+
+            if (_stateController.isInvulnerable) return;
             //manage collision (score)
             if (other.CompareTag("Player1")) //bullet from player 1
             {
@@ -41,7 +48,7 @@ namespace _Scripts.Managers
             {
                 ScoreFromServer(10, false);
             }
-            PlayExplosionClip();
+            
             ReturnToBulletPool();
         }
 

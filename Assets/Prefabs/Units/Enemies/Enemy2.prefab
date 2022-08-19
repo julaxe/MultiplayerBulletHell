@@ -122,6 +122,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 0}
   _networkObjectCache: {fileID: 3785285489386224122}
   weapon: {fileID: 5815601112850478215}
+  isInvulnerable: 1
   clickRadius: 0.25
   initialState: {fileID: 11400000, guid: 77d51a29573bd724ba45fefe08ebf5f4, type: 2}
   currentState: {fileID: 11400000, guid: 77d51a29573bd724ba45fefe08ebf5f4, type: 2}

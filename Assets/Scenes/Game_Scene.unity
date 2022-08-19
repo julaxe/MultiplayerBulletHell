@@ -2263,7 +2263,7 @@ GameObject:
   - component: {fileID: 1106493216}
   - component: {fileID: 1106493215}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Enemy3Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2302,7 +2302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0adf07212615104aa62424963ffc366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySo: {fileID: 0}
+  enemySo: {fileID: 11400000, guid: e217f8ee0f3c8d44aab05041d0a6cfc0, type: 2}
 --- !u!114 &1106493216
 MonoBehaviour:
   m_ObjectHideFlags: 0
