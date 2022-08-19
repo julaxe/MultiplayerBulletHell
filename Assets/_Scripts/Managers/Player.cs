@@ -119,8 +119,23 @@ namespace _Scripts.Managers
             }
         }
 
-        
-        
+        public void SwitchBetweenShootingAndSpawning()
+        {
+            switch (GameManager.Instance.State)
+            {
+                case GameState.Shooting:
+                    GameManager.Instance.ChangeState(GameState.Spawning);
+                    break;
+                case GameState.Spawning:
+                    GameManager.Instance.ChangeState(GameState.Shooting);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+
 
         #endregion
 

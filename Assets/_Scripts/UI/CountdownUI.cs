@@ -16,8 +16,8 @@ namespace _Scripts.UI
         
         private void UpdateText()
         {
-            if(ShareManager.Instance != null)
-                text.text = ShareManager.Instance.countDown.ToString();
+            if(TimerManager.Instance != null)
+                text.text = TimerManager.Instance.countDown.ToString();
         }
     }
 }

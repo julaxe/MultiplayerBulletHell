@@ -35,6 +35,9 @@ namespace _Scripts.Managers
                 case GameState.Transition:
                     HandleTransition();
                     break;
+                case GameState.ServerPlayMode:
+                    HandleServerPlayMode();
+                    break;
                 case GameState.Shooting:
                     HandleShooting();
                     break;
@@ -45,7 +48,8 @@ namespace _Scripts.Managers
                     break;
                 case GameState.Lose:
                     break;
-               
+
+                
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
@@ -54,8 +58,10 @@ namespace _Scripts.Managers
         
             Debug.Log($"New state: {newState}");
         }
-        
-        
+
+       
+
+
         private void HandleLobby() 
         {
             UIManager.Instance.ShowLobby();
@@ -66,7 +72,7 @@ namespace _Scripts.Managers
         {
             //empty for now
             UIManager.Instance.ShowCountdown();
-            ShareManager.Instance.InitializeCountdown();
+            TimerManager.Instance.InitializeCountdown(TimerManager.TimerType.Countdown);
             NetworkObjectPool.Instance.InitializePool();
             
         }
@@ -74,6 +80,11 @@ namespace _Scripts.Managers
         public void HandleStartGameAfterCountdown()
         {
             AudioSystem.Instance.PlayMusic(shootingClip);
+        }
+        
+        private void HandleServerPlayMode()
+        {
+            TimerManager.Instance.InitializeCountdown(TimerManager.TimerType.Switch);
         }
         private void HandleShooting()
         {
@@ -93,10 +104,11 @@ namespace _Scripts.Managers
     [Serializable]
     public enum GameState {
         Lobby = 1,
-        Transition = 2,
-        Shooting = 3,
-        Spawning = 4,
-        Win = 5,
-        Lose = 6,
+        Transition,
+        ServerPlayMode,
+        Shooting,
+        Spawning,
+        Win,
+        Lose,
     }
 }
