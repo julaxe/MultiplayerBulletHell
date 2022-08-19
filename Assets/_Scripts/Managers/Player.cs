@@ -17,7 +17,7 @@ namespace _Scripts.Managers
         private Camera _mainCamera;
         
         [SyncVar(OnChange = nameof(OnTakeDamage))] public float hp = 100.0f;
-        [SyncVar] public int score = 0;
+        [SyncVar(OnChange = nameof(OnScore))] public int score = 0;
 
         [SyncVar] public bool isPlayer1 = false;
 
@@ -54,14 +54,22 @@ namespace _Scripts.Managers
         public void TakeDamage(float damage)
         {
             if (hp == 0.0f) return;
-
+            
             hp -= damage;
             if (hp < 0.0f) hp = 0.0f;
         }
 
         private void OnTakeDamage(float previous, float current, bool onServer)
         {
+            if (!IsOwner) return;
             AudioSystem.Instance.PlaySound(damageClip);
+            UIManager.Instance.AnimatePlayerHealth();
+        }
+
+        private void OnScore(int previous, int current, bool onServer)
+        {
+            if (!IsOwner) return;
+            UIManager.Instance.AnimatePlayerScore();
         }
         
         

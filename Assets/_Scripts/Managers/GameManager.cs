@@ -73,7 +73,7 @@ namespace _Scripts.Managers
             //empty for now
             UIManager.Instance.ShowCountdown();
             TimerManager.Instance.InitializeCountdown(TimerManager.TimerType.Countdown);
-            NetworkObjectPool.Instance.InitializePool();
+            //NetworkObjectPool.Instance.InitializePool();
             
         }
 

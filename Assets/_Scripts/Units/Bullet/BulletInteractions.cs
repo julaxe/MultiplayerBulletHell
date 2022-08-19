@@ -35,6 +35,7 @@ namespace _Scripts.Units.Bullet
         public override void OnStopNetwork()
         {
             base.OnStopNetwork();
+            if(!this.gameObject.scene.isLoaded) return;
             bulletAnimation.ShowHit();
         }
 

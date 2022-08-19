@@ -22,11 +22,21 @@ namespace _Scripts.Units.Player
         private void Start()
         {
             GameManager.OnBeforeStateChanged += OnChangeState;
+            
         }
 
         public void OnDestroy()
         {
             GameManager.OnAfterStateChanged -= OnChangeState;
+        }
+
+        public override void OnStartNetwork()
+        {
+            base.OnStartNetwork();
+            enabled = IsOwner;
+
+            if (!IsOwner) return;
+            
             if (!Managers.Player.Instance.isPlayer1)
             {
                 ChangeToEnemy();
@@ -36,12 +46,6 @@ namespace _Scripts.Units.Player
                 //is player
                 weaponSo.bulletSo.bulletPrefab.tag = "Player1";
             }
-        }
-
-        public override void OnStartNetwork()
-        {
-            base.OnStartNetwork();
-            enabled = IsOwner;
         }
         
         void ChangeToEnemy()
@@ -59,7 +63,7 @@ namespace _Scripts.Units.Player
             {
                 _timer = 0.0f;
                 AudioSystem.Instance.PlaySound(weaponSo.clip);
-                Shoot_ServerRpc();
+                Shoot_ServerRpc(weaponSo.bulletSo.bulletPrefab);
             }
             _timer += Time.fixedDeltaTime;
         }
@@ -78,10 +82,11 @@ namespace _Scripts.Units.Player
 
 
         [ServerRpc]
-        private void Shoot_ServerRpc()
+        private void Shoot_ServerRpc(GameObject bulletPrefab)
         {
-            var bullet = NetworkObjectPool.Instance.GetNetworkObject(weaponSo.bulletSo.bulletPrefab,
-                canon.position, canon.rotation);
+            // var bullet = NetworkObjectPool.Instance.GetNetworkObject(weaponSo.bulletSo.bulletPrefab,
+            //     canon.position, canon.rotation);
+            var bullet = Instantiate(bulletPrefab, canon.position, canon.rotation);
             bullet.GetComponent<BulletInteractions>().OnShoot(canon.forward);
             Spawn(bullet);
         }

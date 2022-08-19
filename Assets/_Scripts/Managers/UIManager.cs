@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using _Scripts.Utilities;
 using UnityEngine;
+using DG.Tweening;
+using Vector3 = UnityEngine.Vector3;
 
 namespace _Scripts.Managers
 {
@@ -12,6 +15,9 @@ namespace _Scripts.Managers
         [SerializeField] private Canvas playerCanvas;
         [SerializeField] private Canvas spawningCanvas;
         [SerializeField] private Canvas phaseTestingCanvas;
+
+        [SerializeField] private Transform playerHealthTransform;
+        [SerializeField] private Transform playerScoreTransform;
 
         private List<Canvas> _canvasList = new List<Canvas>();
 
@@ -40,19 +46,37 @@ namespace _Scripts.Managers
         public void ShowCountdown()
         {
             ShowCanvas(countDownCanvas);
-            //initialize countdown
         }
 
         public void ShowSpawningUI()
         {
-            ShowCanvas(playerCanvas, spawningCanvas, phaseTestingCanvas);
+            ShowCanvas(playerCanvas, spawningCanvas);
         }
 
         public void ShowShootingUI()
         {
-            ShowCanvas(playerCanvas, phaseTestingCanvas);
+            ShowCanvas(playerCanvas);
         }
 
         public Canvas GetSpawningCanvas() => spawningCanvas;
+
+        public void AnimatePlayerHealth()
+        {
+            ShakeTransform(playerHealthTransform);
+        }
+        
+        public void AnimatePlayerScore()
+        {
+            ShakeTransform(playerScoreTransform);
+        }
+
+        private void ShakeTransform(Transform transformToShake)
+        {
+            transformToShake.DOShakeScale(0.2f, 1.0f, 1,
+                0.0f, true).OnComplete(() =>
+            {
+                transformToShake.DOScale(Vector3.one, 0.1f);
+            });
+        }
     }
 }
