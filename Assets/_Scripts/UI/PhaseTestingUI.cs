@@ -7,7 +7,7 @@ namespace _Scripts.UI
     {
         public void ChangePhasePressed()
         {
-            Managers.Player.Instance.SwitchBetweenShootingAndSpawning(GameManager.Instance.State);
+            Managers.Player.Instance.SwitchBetweenShootingAndSpawning(GameManager.Instance.PlayState);
         }
 
     }

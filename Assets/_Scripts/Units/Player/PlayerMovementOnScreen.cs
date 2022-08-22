@@ -31,7 +31,7 @@ namespace _Scripts.Units.Player
 
         private void FixedUpdate()
         {
-            if (GameManager.Instance.State != GameState.Shooting) return;
+            if (GameManager.Instance.PlayState != PlayState.Shooting) return;
             if (!Managers.Player.Instance.playerInput.isMoving) return;
             Vector2 positionOnScreen = MainCamera.ScreenToWorldPoint(Touchscreen.current.primaryTouch.position.ReadValue());
             transform.position = positionOnScreen;

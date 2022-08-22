@@ -9,7 +9,7 @@ namespace _Scripts.Managers
 
         public void OnLeftClick(InputValue value)
         {
-            if (GameManager.Instance.State == GameState.Spawning)
+            if (GameManager.Instance.PlayState == PlayState.Spawning)
             {
                 isMoving = false;
                 return;

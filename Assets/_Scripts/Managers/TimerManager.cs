@@ -24,7 +24,7 @@ namespace _Scripts.Managers
             base.OnStartNetwork();
             Instance = this;
         }
-        
+
         private void Update()
         {
             UpdateCountdownOnServer();
@@ -57,14 +57,14 @@ namespace _Scripts.Managers
         private void OnCountdownFinished()
         {
             //server
-            GameManager.Instance.ChangeState(GameState.ServerPlayMode);
+            //GameManager.Instance.ChangeState(GameState.ServerPlayMode);
             
             //clients
             PlayersManager.Instance.ChangeMusicToShooting();
             PlayersManager.Instance.SpawnPlayersPrefabs();
-            PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer1().Owner, GameState.Shooting);
+            PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer1().Owner, PlayState.Shooting);
             if(PlayersManager.Instance.Player2Exists())
-                PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
+                PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, PlayState.Spawning);
             
         }
         

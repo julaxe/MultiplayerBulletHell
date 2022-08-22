@@ -29,7 +29,7 @@ namespace _Scripts.Units.Player
                 return;
             }
             if(!Managers.Player.Instance.isPlayer1) RotatePlayer2();
-            GameManager.OnBeforeStateChanged += StartTransition;
+            GameManager.OnBeforePlayStateChanged += StartTransition;
 
         }
         
@@ -37,12 +37,12 @@ namespace _Scripts.Units.Player
         private void Update()
         {
             if (!_inTransition) return;
-            switch (GameManager.Instance.State)
+            switch (GameManager.Instance.PlayState)
             {
-                case GameState.Shooting:
+                case PlayState.Shooting:
                     TransitionIn();
                     break;
-                case GameState.Spawning:
+                case PlayState.Spawning:
                     TransitionOut();
                     break;
                 default:
@@ -93,9 +93,9 @@ namespace _Scripts.Units.Player
             transform.position = Vector3.Lerp(transform.position, position, speedTransition);
         }
 
-        private void StartTransition(GameState state)
+        private void StartTransition(PlayState state)
         {
-            if(state == GameState.Shooting || state == GameState.Spawning)
+            if(state == PlayState.Shooting || state == PlayState.Spawning)
                 _inTransition = true;
         }
     }

@@ -92,35 +92,35 @@ namespace _Scripts.Managers
 
         #region ChangeState
         [ServerRpc]
-        public void ChangeStateForEveryBody(GameState newState)
+        public void ChangePlayStateForEveryBody(PlayState newState)
         {
             //server-side
-            GameManager.Instance.ChangeState(newState);
+            GameManager.Instance.ChangePlayState(newState);
             
             //clients
-            ChangeStateOnAllClients(newState);
+            ChangePlayStateOnAllClients(newState);
         }
 
         [ObserversRpc]
-        public void ChangeStateOnAllClients(GameState newState)
+        public void ChangePlayStateOnAllClients(PlayState newState)
         {
-            GameManager.Instance.ChangeState(newState);
+            GameManager.Instance.ChangePlayState(newState);
         }
 
         [ServerRpc]
-        public void SwitchBetweenShootingAndSpawning(GameState currentState)
+        public void SwitchBetweenShootingAndSpawning(PlayState currentState)
         {
             switch (currentState)
             {
-                case GameState.Spawning:
-                    PlayersManager.Instance.ChangeStateToSpecificClient(Owner, GameState.Shooting);
+                case PlayState.Spawning:
+                    PlayersManager.Instance.ChangeStateToSpecificClient(Owner, PlayState.Shooting);
                     if(PlayersManager.Instance.Player2Exists())
-                        PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Spawning);
+                        PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, PlayState.Spawning);
                     break;
-                case GameState.Shooting:
-                    PlayersManager.Instance.ChangeStateToSpecificClient(Owner, GameState.Spawning);
+                case PlayState.Shooting:
+                    PlayersManager.Instance.ChangeStateToSpecificClient(Owner, PlayState.Spawning);
                     if(PlayersManager.Instance.Player2Exists())
-                        PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, GameState.Shooting);
+                        PlayersManager.Instance.ChangeStateToSpecificClient(PlayersManager.Instance.GetPlayer2().Owner, PlayState.Shooting);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(currentState), currentState, null);
@@ -129,13 +129,13 @@ namespace _Scripts.Managers
 
         public void SwitchBetweenShootingAndSpawning()
         {
-            switch (GameManager.Instance.State)
+            switch (GameManager.Instance.PlayState)
             {
-                case GameState.Shooting:
-                    GameManager.Instance.ChangeState(GameState.Spawning);
+                case PlayState.Shooting:
+                    GameManager.Instance.ChangePlayState(PlayState.Spawning);
                     break;
-                case GameState.Spawning:
-                    GameManager.Instance.ChangeState(GameState.Shooting);
+                case PlayState.Spawning:
+                    GameManager.Instance.ChangePlayState(PlayState.Shooting);
                     break;
                 default:
                     break;

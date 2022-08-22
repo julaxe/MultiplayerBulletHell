@@ -10,7 +10,7 @@ namespace _Scripts.UI
         {
             InstanceFinder.ServerManager.StartConnection();
             InstanceFinder.ClientManager.StartConnection();
-            GameManager.Instance.ChangeState(GameState.Lobby);
+            GameManager.Instance.ChangePlayState(PlayState.Lobby);
         }
 
         public void LoginPressed()

@@ -33,9 +33,9 @@ namespace _Scripts.Managers
         }
         
         [TargetRpc]
-        public void ChangeStateToSpecificClient(NetworkConnection conn, GameState newState)
+        public void ChangeStateToSpecificClient(NetworkConnection conn, PlayState newState)
         {
-            GameManager.Instance.ChangeState(newState);
+            GameManager.Instance.ChangePlayState(newState);
         }
 
         [ObserversRpc]

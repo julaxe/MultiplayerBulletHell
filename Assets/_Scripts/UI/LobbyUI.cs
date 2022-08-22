@@ -14,26 +14,26 @@ namespace _Scripts.UI
 
         private void OnEnable()
         {
-            GameManager.OnAfterStateChanged += Initialize;
+            GameManager.OnAfterPlayStateChanged += Initialize;
             PlayersManager.PlayerIsReadyChanged += ChangeReadyColor;
         }
 
         private void OnDisable()
         {
-            GameManager.OnAfterStateChanged -= Initialize;
+            GameManager.OnAfterPlayStateChanged -= Initialize;
             PlayersManager.PlayerIsReadyChanged -= ChangeReadyColor;
         }
 
-        private void Initialize(GameState state)
+        private void Initialize(PlayState state)
         {
-            if (state != GameState.Lobby) return;
+            if (state != PlayState.Lobby) return;
             readyButton.onClick.AddListener(() =>
             {
                 Player.Instance.ServerSetIsReady(!Managers.Player.Instance.isReady);
             });
             startButton.onClick.AddListener(() =>
             {
-                Player.Instance.ChangeStateForEveryBody(GameState.Transition);
+                Player.Instance.ChangePlayStateForEveryBody(PlayState.Countdown);
             });
         }
 

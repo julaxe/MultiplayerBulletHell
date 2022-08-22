@@ -21,13 +21,13 @@ namespace _Scripts.Units.Player
 
         private void Start()
         {
-            GameManager.OnBeforeStateChanged += OnChangeState;
+            GameManager.OnBeforePlayStateChanged += OnChangeState;
             
         }
 
         public void OnDestroy()
         {
-            GameManager.OnAfterStateChanged -= OnChangeState;
+            GameManager.OnBeforePlayStateChanged -= OnChangeState;
         }
 
         public override void OnStartNetwork()
@@ -56,7 +56,7 @@ namespace _Scripts.Units.Player
 
         private void FixedUpdate()
         {
-            if (GameManager.Instance.State == GameState.Spawning) return;
+            if (GameManager.Instance.PlayState == PlayState.Spawning) return;
             if (!_isShooting) return;
             
             if (_timer >= fireRateInSeconds)
@@ -68,9 +68,9 @@ namespace _Scripts.Units.Player
             _timer += Time.fixedDeltaTime;
         }
 
-        private async void OnChangeState(GameState state)
+        private async void OnChangeState(PlayState state)
         {
-            if (state == GameState.Shooting)
+            if (state == PlayState.Shooting)
             {
                 await Task.Delay(1000);
                 _isShooting = true;
