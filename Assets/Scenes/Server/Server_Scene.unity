@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startInOffline: 0
-  _offlineScene: Assets/Scenes/Server_Scene.unity
-  _onlineScene: Assets/Scenes/Game_Scene.unity
+  _offlineScene: Assets/Scenes/Server/Server_Scene.unity
+  _onlineScene: Assets/Scenes/Lobby_Scene.unity
   _replaceScenes: 0
 --- !u!114 &369850107
 MonoBehaviour:
@@ -344,8 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startInOffline: 0
-  _offlineScene: Assets/Scenes/Server_Scene.unity
-  _onlineScene: Assets/Scenes/Game_Scene.unity
+  _offlineScene: Assets/Scenes/Server/Server_Scene.unity
+  _onlineScene: Assets/Scenes/Lobby_Scene.unity
   _replaceScenes: 0
 --- !u!114 &1103774516
 MonoBehaviour:

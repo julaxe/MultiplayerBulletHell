@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace _Scripts.Managers
 {
-    public class GameManager : PersistentSingleton<GameManager> {
+    public class GameManager : StaticInstance<GameManager> {
        //events
         public static event Action<GameState> OnBeforeStateChanged;
         public static event Action<GameState> OnAfterStateChanged;
